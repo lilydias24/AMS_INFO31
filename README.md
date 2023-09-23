@@ -1,2 +1,2 @@
-# finalPaperINFO31
- final Paper INFO31 - SMA
+# TCC_INFO31
+ Trabalho de Conclusão de Curso - INFO31 - AMS - 2023
