@@ -40,12 +40,15 @@
                     $sql = "INSERT INTO historico (data_hr, matricula) VALUE ('{$dt_hrAtual}', '{$comanda}')";
                     $result = $connect->query($sql) or die($connect->error);
                     // Se escaneado a mesma matrícula mais de uma vez aparece como "entrada duplicada"
-                    // Criar modal com resultado, foto e status                  
+                    // Criar modal com resultado, foto e status  
+                    // Criar ligação de tabelas para o histórico
+                    // Fazer fluxo de status                
+                    // arrumar o cronograma e lista-lo no lado do operador
                     echo json_encode($comanda);
 
                     if($result == true){
                         print "<script> alert('Acesso registrado com Sucesso!'); </script>";
-                        print "<script> location.href='historico.php'; </script>";
+                        print "<script> location.href='status.php'; </script>";
                     }else{
                         print "<script> alert('Não foi Possível Registrar o Acesso!'); </script>";
                         print "<script> location.href='historico.php'; </script>";
