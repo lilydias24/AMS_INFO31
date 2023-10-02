@@ -20,36 +20,44 @@
 			<li class="nav-item mt-5"><button type="button" class="btn btn-danger"><a href="../Login/sair.php" class="text-decoration-none text-light">Sair</a></button></li>
 		</ul>
 	</nav>
-    <div class="rounded table-responsive text-center m-5">
-		<table class="table table-info table-hover shadow">
-			<thead class="table-light">				  
-				<tr>
-					<th>Data - Hora</th>
-					<th>Status</th>
-					<th>Nome</th>
-					<th>Turma</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>18/06 - 07:55</td>
-					<td>Presente</td>
-					<td>Alvin</td>
-					<td>INFO12</td>
-				  </tr>
-				  <tr>
-					<td>18/06 - 12:15</td>
-					<td>Entrada Autorizada</td>
-					<td>Bear</td>
-					<td>INFO31</td>
-				  </tr>
-				  <tr>
-					<td>18/06 - 11:35</td>
-					<td>Ausente</td>
-					<td>Stellas</td>
-					<td>ADM21</td>
-				  </tr>
-			</tbody>
-		</table>
+	<div class="container-sm rounded p-2 mt-5 text-center text-success">
+		<h4>Histórico de Acessos</h4>
+		<hr>
+		<?php
+		    include("../config.php");
+
+			$sql = "SELECT * FROM aluno AS al INNER JOIN historico AS hist ON al.matricula = hist.matricula";
+			$result = $connect->query($sql);
+			$qtLinhas = $result->num_rows;
+
+			if($qtLinhas > 0){
+				print "<div class='rounded table-responsive text-center m-3'>";
+				print "<table class='table table-info table-hover shadow'>";
+				print "<thead class='table-light'>";				  
+				print "<tr>";
+				print "<th> Data - Hora </td>";             
+				print "<th> Status </th>";
+				print "<th> Nome </th>";
+				print "<th> Matrícula </th>";
+				print "<th> Turma </th>";
+				print "</tr>"; 
+				print "</thead>"; 
+				while($row = $result->fetch_object()){
+				print "<tbody>"; 
+				print "<tr>";
+				print "<td>" . $row->data_hr . "</td>";
+				//print "<td>" . $row->descricao . "</td>";
+				print "<td>" . $row->nome . "</td>";
+				print "<td>" . $row->matricula . "</td>";
+				//print "<td>" . $row->descricao . "</td>";
+				print "</tr>";
+				print "</tbody>";   
+				}
+				print "</table>";
+				print "</div>";
+			} else {
+				print "<p class='alert alert-danger'>Não Foraram Encontrados Resultados!</p>";
+			}
+		?>
 	</div>
 </BODY>

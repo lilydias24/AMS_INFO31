@@ -20,7 +20,6 @@
         </ul>
     </nav>
     <div class="row mt-5 text-center">
-     
         <div class="col">
             <a href="?page=novo" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <div class="card shadow m-5 text-bg-success p-5">

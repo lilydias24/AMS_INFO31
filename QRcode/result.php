@@ -22,27 +22,37 @@
 	</nav>
     <div class="container-sm rounded mt-5 p-4 text-bg-success text-center" style="width: 50%;">
         <?php
-        
-        echo json_encode($_GET['comanda']);
 
         include("../config.php");
 
-        $sql = "SELECT * FROM aluno AS al INNER JOIN historico AS hist
-        ON al.matricula = hist.matricula";
+        $comanda = $_GET['comanda'];
+        date_default_timezone_set('America/Sao_Paulo');
+        $dt_hrAtual = date('Y-m-d H:i:s');
+
+        $sql = "SELECT * FROM aluno";
         $result = $connect->query($sql);
         $qtLinhas = $result->num_rows;
 
         if($qtLinhas > 0){
             while($row = $result->fetch_object()){
-                for($i = 0; $i < count($matricula); $i++){
-                    if(json_encode($_GET['comanda']) == $row->matricula)
-                    {
-                        echo json_encode($_GET['comanda']);
+                if($comanda == $row->matricula)
+                {
+                    $sql = "INSERT INTO historico (data_hr, matricula) VALUE ('{$dt_hrAtual}', '{$comanda}')";
+                    $result = $connect->query($sql) or die($connect->error);
+                    // Se escaneado a mesma matrícula mais de uma vez aparece como "entrada duplicada"
+                    // Criar modal com resultado, foto e status                  
+                    echo json_encode($comanda);
+
+                    if($result == true){
+                        print "<script> alert('Acesso registrado com Sucesso!'); </script>";
+                        print "<script> location.href='historico.php'; </script>";
+                    }else{
+                        print "<script> alert('Não foi Possível Registrar o Acesso!'); </script>";
+                        print "<script> location.href='historico.php'; </script>";
                     }
                 }
             }
         }
-
         ?>
     </div>
 </BODY>
