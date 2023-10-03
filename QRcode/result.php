@@ -48,7 +48,7 @@
 
                     if($result == true){
                         print "<script> alert('Acesso registrado com Sucesso!'); </script>";
-                        print "<script> location.href='status.php'; </script>";
+                        print "<script> location.href='registro.php'; </script>";
                     }else{
                         print "<script> alert('Não foi Possível Registrar o Acesso!'); </script>";
                         print "<script> location.href='historico.php'; </script>";
