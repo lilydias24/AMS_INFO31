@@ -42,6 +42,8 @@
                     // Arrumar modal do registro com nome, matricula, turma, foto e status  
                     // Criar ligação de tabelas para o histórico (informa)
                     // arrumar o cronograma e lista-lo no lado do operador
+                    // Ver como lstar a imagem do upload e deletar ela
+                    // Arrumar o cronograma
                     
                     //echo json_encode($comanda);
 
