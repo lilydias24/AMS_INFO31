@@ -27,6 +27,7 @@
 		    include("../config.php");
 
 			$sql = "SELECT * FROM aluno AS al INNER JOIN historico AS hist ON al.matricula = hist.matricula";
+			
 			$result = $connect->query($sql);
 			$qtLinhas = $result->num_rows;
 
@@ -46,10 +47,10 @@
 				print "<tbody>"; 
 				print "<tr>";
 				print "<td>" . $row->data_hr . "</td>";
-				//print "<td>" . $row->descricao . "</td>";
+				//print "<td>" . $row->ID_historico . "</td>";
 				print "<td>" . $row->nome . "</td>";
 				print "<td>" . $row->matricula . "</td>";
-				//print "<td>" . $row->descricao . "</td>";
+				//print "<td>" . $row->ID_Turma . "</td>";
 				print "</tr>";
 				print "</tbody>";   
 				}

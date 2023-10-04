@@ -10,7 +10,7 @@
     <hr>
         <input type="hidden" name="acao" value="editar">
         <input type="hidden" name="matricula" value="<?php print $row->matricula; ?>">
-        <div class="m-3">
+        <div class="m-3 text-center">
             <label for="matricula" class="h5 m-2">Matrícula :</label>
             <span class="badge bg-info">10 dígitos</span>
             <input type="text" class="form-control w-75 mx-auto" id="matricula" name="matricula" value="<?php print $row->matricula; ?>">
@@ -25,18 +25,17 @@
             <input type="text" class="form-control w-75 mx-auto" id="num_responsavel" name="num_responsavel" value="<?php print $row->num_responsavel; ?>">
             
             <label for="foto" class="h5 m-3">Foto :</label>
-            <input type="file" class="form-control w-75 mx-auto" name="foto" value="<?php print $row->foto; ?>" accept="image/png, image/jpeg">
+            <input type="file" class="form-control w-75 mx-auto" name="foto" value="<?php print $row->foto; ?>">
         </div>
         <hr>
         <div class="m-3">
             <label for="turma" class="h4">Turma</label>
-            <select name="ID_turma" class="form-select w-75 mx-auto">
-            <option value=><?php print $row->ID_turma; ?> </option>
+            <select class="form-select text-center w-75 mx-auto" name="ID_turma">
                 <?php 
                     $sql = "SELECT * FROM turma";
                     $result = $connect->query($sql);
                     while($row = $result->fetch_object()){
-                        print "<option value='". $row->ID_turma ."'>" . $row->descricao;
+                        print "<option selected='". $row->ID_turma ."'>" . $row->descricao;
                         print "</option>";
                     }
                 ?>

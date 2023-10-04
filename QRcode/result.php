@@ -22,7 +22,6 @@
 	</nav>
     <div class="container-sm rounded mt-5 p-4 text-bg-success text-center" style="width: 50%;">
         <?php
-
         include("../config.php");
 
         $comanda = $_GET['comanda'];
@@ -39,12 +38,12 @@
                 {
                     $sql = "INSERT INTO historico (data_hr, matricula) VALUE ('{$dt_hrAtual}', '{$comanda}')";
                     $result = $connect->query($sql) or die($connect->error);
-                    // Se escaneado a mesma matrícula mais de uma vez aparece como "entrada duplicada"
-                    // Criar modal com resultado, foto e status  
-                    // Criar ligação de tabelas para o histórico
-                    // Fazer fluxo de status                
+                    // Fazer fluxo de status de acordo com a hora de acesso
+                    // Arrumar modal do registro com nome, matricula, turma, foto e status  
+                    // Criar ligação de tabelas para o histórico (informa)
                     // arrumar o cronograma e lista-lo no lado do operador
-                    echo json_encode($comanda);
+                    
+                    //echo json_encode($comanda);
 
                     if($result == true){
                         print "<script> alert('Acesso registrado com Sucesso!'); </script>";

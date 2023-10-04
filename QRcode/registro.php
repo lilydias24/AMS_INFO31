@@ -12,6 +12,17 @@
 
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"> Registro </button>
 
+    <?php
+		  include("../config.php");
+			$sql = "SELECT * FROM historico AS hist INNER JOIN aluno AS al ON hist.matricula = al.matricula
+      INNER JOIN informa AS inf ON hist.ID_historico = inf.ID_historico 
+      INNER JOIN status AS stts ON inf.ID_status = inf.ID_status";
+			// Criar modal do registro com nome, matricula, turma, foto e status  
+			$result = $connect->query($sql);
+			$qtLinhas = $result->num_rows;
+
+			if($qtLinhas > 0){}
+    ?>
 <div class="modal-fullscreen-md-down">
   <div class="modal fade text-center mx-auto" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -22,19 +33,19 @@
           <button type="button" class="btn-close btn btn-danger" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="../Aluno/fotos/2023.08.29-01.46.jpg" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Aluno</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
-                </div>
-            <button type="button" a href="index.php" class="btn btn-outline-info btn-lg m-3 mt-3">OK</button>
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="../Aluno/fotos/2023.08.29-01.46.jpg" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Aluno</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+              </div>
+            </div>
+          </div>
+          <button type="button" a href="index.php" class="btn btn-outline-info btn-lg m-3 mt-3">OK</button>
         </div>
       </div>
     </div>
