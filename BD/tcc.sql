@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 22-Set-2023 às 17:53
+-- Tempo de geração: 05-Out-2023 às 04:36
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -73,11 +73,6 @@ INSERT INTO `cronograma` (`ID_cronos`, `dia_semana`, `hr_entrada`, `hr_saida`, `
 (33, 'Wed', '14:39:00', '14:40:00', 11),
 (34, 'Thu', '13:35:00', '16:39:00', 11),
 (35, 'Fri', '16:35:00', '18:35:00', 11),
-(65, 'Mon', '21:42:00', '22:42:00', 9),
-(66, 'Tue', '22:42:00', '01:42:00', 9),
-(67, 'Wed', '23:42:00', '01:42:00', 9),
-(68, 'Thu', '00:42:00', '02:42:00', 9),
-(69, 'Fri', '16:42:00', '20:42:00', 9),
 (71, 'Mon', '08:00:00', '17:10:00', 11),
 (72, 'Tue', '07:45:00', '17:05:00', 11),
 (73, 'Wed', '08:00:00', '12:25:00', 11),
@@ -93,11 +88,19 @@ INSERT INTO `cronograma` (`ID_cronos`, `dia_semana`, `hr_entrada`, `hr_saida`, `
 DROP TABLE IF EXISTS `historico`;
 CREATE TABLE IF NOT EXISTS `historico` (
   `ID_historico` int NOT NULL AUTO_INCREMENT,
-  `data_hr` datetime NOT NULL,
+  `data_hr` datetime DEFAULT NULL,
   `matricula` char(10) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`ID_historico`),
-  UNIQUE KEY `matricula` (`matricula`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  KEY `matricula` (`matricula`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `historico`
+--
+
+INSERT INTO `historico` (`ID_historico`, `data_hr`, `matricula`) VALUES
+(12, '2023-10-03 11:41:00', '2021319363'),
+(24, '2023-10-05 00:46:46', '2021319363');
 
 -- --------------------------------------------------------
 
@@ -109,9 +112,16 @@ DROP TABLE IF EXISTS `informa`;
 CREATE TABLE IF NOT EXISTS `informa` (
   `ID_historico` int NOT NULL,
   `ID_status` int NOT NULL,
-  UNIQUE KEY `ID_historico` (`ID_historico`,`ID_status`),
-  KEY `ID_status` (`ID_status`)
+  KEY `ID_historico` (`ID_historico`,`ID_status`) USING BTREE,
+  KEY `ID_status` (`ID_status`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `informa`
+--
+
+INSERT INTO `informa` (`ID_historico`, `ID_status`) VALUES
+(12, 6);
 
 -- --------------------------------------------------------
 
@@ -143,18 +153,18 @@ INSERT INTO `status` (`ID_status`, `descricao`) VALUES
 DROP TABLE IF EXISTS `turma`;
 CREATE TABLE IF NOT EXISTS `turma` (
   `ID_turma` int NOT NULL AUTO_INCREMENT,
-  `descricao` char(6) COLLATE utf8mb4_general_ci NOT NULL,
+  `nome_turma` char(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`ID_turma`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `turma`
 --
 
-INSERT INTO `turma` (`ID_turma`, `descricao`) VALUES
+INSERT INTO `turma` (`ID_turma`, `nome_turma`) VALUES
 (8, 'INF21'),
-(9, 'ADM22'),
-(11, 'INF31');
+(11, 'INF31'),
+(14, 'ADM12');
 
 -- --------------------------------------------------------
 
