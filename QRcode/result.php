@@ -1,62 +1,107 @@
 <!DOCTYPE HTML>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>    
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
-    <title>Escaner - QR Code</title>		
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>    
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+  <title>Escaner - QR Code</title>		
 </head>		
 <BODY class="container-xxl" style="background-color: #79dfa5;">
     <nav class="rounded shadow bg-light mt-3">
-		<ul class="nav nav-pills nav-justified">
+        <ul class="nav nav-pills nav-justified">
         <li class="nav-item"><a href="./index.html" class="float-start"><img src="../logo.png" style="width:250px;" alt="logo"></a></img></li>
-            <li class="nav-item mt-5"><button type="button" class="btn btn-outline-success"><a href="../operador.php" class="text-decoration-none text-black" aria-current="page">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16"><path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
-            </svg></a></button></li>
-			<li class="nav-item mt-5"><a href="./index.php" class="text-decoration-none btn btn-outline-success">Escaner</a></li>
-			<li class="nav-item mt-5"><a href="#" class="text-decoration-none btn btn-outline-success">Cronograma</a></li>
-			<li class="nav-item mt-5"><button type="button" class="btn btn-danger"><a href="../Login/sair.php" class="text-decoration-none text-light">Sair</a></button></li>
-		</ul>
-	</nav>
-    <div class="container-sm rounded mt-5 p-4 text-bg-success text-center" style="width: 50%;">
-        <?php
-        include("../config.php");
+        <li class="nav-item mt-5"><button type="button" class="btn btn-outline-success"><a href="../operador.php" class="text-decoration-none text-black" aria-current="page">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16"><path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
+        </svg></a></button></li>
+        <li class="nav-item mt-5"><a href="./index.php" class="text-decoration-none btn btn-outline-success">Escaner</a></li>
+        <li class="nav-item mt-5"><a href="#" class="text-decoration-none btn btn-outline-success">Cronograma</a></li>
+        <li class="nav-item mt-5"><button type="button" class="btn btn-danger"><a href="../Login/sair.php" class="text-decoration-none text-light">Sair</a></button></li>
+        </ul>
+    </nav>
+  <div class="container-sm rounded mt-5 p-4 text-bg-success text-center" style="width: 50%;">
+    <?php
+    include("../config.php");
 
-        $comanda = $_GET['comanda'];
-        date_default_timezone_set('America/Sao_Paulo');
-        $dt_hrAtual = date('Y-m-d H:i:s');
+    $comanda = $_GET['comanda'];
+    date_default_timezone_set('America/Sao_Paulo');
+    $dt_hrAtual = date('Y-m-d H:i:s');
 
-        $sql = "SELECT * FROM aluno";
-        $result = $connect->query($sql);
-        $qtLinhas = $result->num_rows;
+    $verif = "SELECT * FROM aluno WHERE matricula=". $comanda;
+    $resultado = $connect->query($verif);
+    $qtLinhas = $resultado->num_rows;
+    
+    if($qtLinhas > 0) : 
+        while($row = $resultado->fetch_object()) : ?>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"> Registro </button>
 
-        if($qtLinhas > 0){
-            while($row = $result->fetch_object()){
-                if($comanda == $row->matricula)
-                {
+            <?php
+            $consulta = "SELECT * FROM historico AS hist INNER JOIN aluno AS al ON hist.matricula = al.matricula
+            INNER JOIN turma AS tur ON tur.ID_turma = al.ID_turma 
+            INNER JOIN informa AS inf ON hist.ID_historico = inf.ID_historico 
+            INNER JOIN status AS stts ON inf.ID_status = inf.ID_status"; 
+            // Criar modal do registro com nome, matricula, turma, foto e status  
+            $resultConsulta = $connect->query($consulta);
+            $qtLinhasConsulta = $resultConsulta->num_rows; 
+            
+            if($qtLinhasConsulta > 0) :
+                while($rowCon = $resultConsulta->fetch_object()) : ?>  
+                    <div class="modal-fullscreen-md-down">
+                        <div class="modal fade text-center mx-auto" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content text-bg-success">
+                                <div class="modal-header">
+                                    <h4 class="modal-title m-2" id="exampleModalLabel">Acesso Solicitado</h4>
+                                    <hr>
+                                    <button type="button" class="btn-close btn btn-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row g-0">
+                                        <div class="col-md-5">
+                                            <img src="../Aluno/fotos/2023.08.29-01.46.jpg" class="img-fluid rounded-start" alt="...">
+                                        </div>
+                                        <div class="col-md-7 ">                                                
+                                            <h5 class="card-title">  <p><?php print $rowCon->nome . "<br>" ; ?> </p> <p><?php print "Matrícula : " . $rowCon->matricula . "<br>"; ?></p> <p><?php print "Turma : " . $rowCon->nome_turma . "<br>"; ?></p> </h5>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="card-text mt-3 h5"> <?php print "Status : " . $rowCon->descricao . "<br>"; ?> </p>
+                                        <p class="card-text"><small class="text-body-secondary"><?php print "Data/Hora de Acesso : " . $rowCon->data_hr . "<br>"; ?></small></p>
+                                    </div>
+                                    <form action="" method="POST">
+                                        <a href="index.php"><button type="submit" name="OK" value="registrar" class="btn btn-outline-info btn-lg m-3 mt-3">OK</button></a>
+                                    </form>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>          
+                <?php endwhile; ?>
+            <?php endif; ?>
+            <?php 
+            if($_SERVER["REQUEST_METHOD"] == "POST"){
+                if (isset($_POST['OK'])) {
+
                     $sql = "INSERT INTO historico (data_hr, matricula) VALUE ('{$dt_hrAtual}', '{$comanda}')";
-                    $result = $connect->query($sql) or die($connect->error);
-                    // Fazer fluxo de status de acordo com a hora de acesso
-                    // Arrumar modal do registro com nome, matricula, turma, foto e status  
-                    // Criar ligação de tabelas para o histórico (informa)
-                    // arrumar o cronograma e lista-lo no lado do operador
-                    // Ver como lstar a imagem do upload e deletar ela
-                    // Arrumar o cronograma
-                    
-                    //echo json_encode($comanda);
-
+                    $result = $connect->query($sql) ;
+          
                     if($result == true){
-                        print "<script> alert('Acesso registrado com Sucesso!'); </script>";
-                        print "<script> location.href='registro.php'; </script>";
+                      print "<script> alert('Cadastro Realizado com Sucesso!'); </script>";
+                      print "<script> location.href='index.php'; </script>";
                     }else{
-                        print "<script> alert('Não foi Possível Registrar o Acesso!'); </script>";
-                        print "<script> location.href='historico.php'; </script>";
+                      print "<script> alert('Não foi Possível Cadastrar!'); </script>";
+                      print "<script> location.href='#'; </script>";
                     }
                 }
             }
-        }
-        ?>
-    </div>
+                // Fazer fluxo de status de acordo com a hora de acesso
+                // Arrumar modal do registro com nome, matricula, turma, foto e status  
+                // Ver como criar ligação de tabelas para informa
+                // arrumar o cronograma e lista-lo no lado do operador
+                // Ver como listar a imagem do upload e deletar ela
+            ?>
+        <?php endwhile; ?>
+    <?php endif; ?>        
+  </div>
 </BODY>

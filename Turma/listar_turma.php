@@ -11,13 +11,13 @@
             print "<table class='table table-light table-hover shadow'>";
             print "<tr>";
             print "<th> ID_turma </td>";             
-            print "<th> Descrição </th>";
+            print "<th> Nome da Turma</th>";
             print "<th> Ações </th>";
             print "</tr>"; 
             while($row = $result->fetch_object()){
             print "<tr>";
             print "<td>" . $row->ID_turma . "</td>";
-            print "<td>" . $row->descricao . "</td>";
+            print "<td>" . $row->nome_turma . "</td>";
             print "<td> 
                     <button onclick=\"location.href='?page=editar&ID_turma=".$row->ID_turma. "';\" class='btn btn-success'>Editar</button>
                     <button onclick=\"if(confirm('Tem Certeza de que Deseja Excluir esta Turma?'))

@@ -35,7 +35,7 @@
                     $sql = "SELECT * FROM turma";
                     $result = $connect->query($sql);
                     while($row = $result->fetch_object()){
-                        print "<option selected='". $row->ID_turma ."'>" . $row->descricao;
+                        print "<option selected='". $row->ID_turma ."'>" . $row->nome_turma;
                         print "</option>";
                     }
                 ?>

@@ -24,7 +24,7 @@
                 print "<td>" . $row->dia_semana . "</td>";
                 print "<td>" . $row->hr_entrada . "</td>";
                 print "<td>" . $row->hr_saida . "</td>";                
-                print "<td>" . $row->descricao . "</td>";      
+                print "<td>" . $row->nome_turma . "</td>";      
                 print "<td> 
                 <button onclick=\"location.href='?page=editar&ID_cronos=".$row->ID_cronos. "';\"  class='btn btn-success'>Editar</button>
                 <button onclick=\"if(confirm('Tem Certeza de que Deseja Excluir este Cronograma?'))

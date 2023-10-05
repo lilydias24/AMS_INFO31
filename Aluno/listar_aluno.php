@@ -26,7 +26,7 @@
             print "<td>" . $row->email . "</td>"; 
             print "<td>" . $row->num_responsavel . "</td>"; 
           //  print "<td>" . $row->foto . "</td>"; 
-            print "<td>" . $row->descricao . "</td>";
+            print "<td>" . $row->nome_turma . "</td>";
             print "<td> 
                     <button onclick=\"location.href='?page=editar&matricula=".$row->matricula. "';\" class='btn btn-success'>Editar</button>
                     <button onclick=\"if(confirm('Tem Certeza de que Deseja Excluir este Aluno?'))

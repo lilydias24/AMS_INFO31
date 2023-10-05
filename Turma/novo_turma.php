@@ -4,9 +4,9 @@
     <form action="?page=salvar" method="POST">
         <input type="hidden" name="acao" value="cadastrar">
         <div class="m-3">
-            <label for="descricao" class="h5 m-3">Descrição :</label>
+            <label for="nome_turma" class="h5 m-3">Nome da Turma :</label>
             <span class="badge bg-info">3 letras e 2 números</span>
-            <input type="text" placeholder="Informe o código da turma" name="descricao" id="descricao"
+            <input type="text" placeholder="Informe o código da turma" name="nome_turma" id="nome_turma"
             class="form-control text-center" style="margin-left: 10%; width: 80%;" />
         </div>            
         <button class="btn btn-info btn-lg text-center mt-3" type="submit">Cadastrar</button>
@@ -14,7 +14,7 @@
 </div>
 <script>
     $(document).ready(function () {
-      $('#descricao').inputmask({
+      $('#nome_turma').inputmask({
         mask: 'AAA99', // 3 letras + 2 números
         definitions: {
           'A': {

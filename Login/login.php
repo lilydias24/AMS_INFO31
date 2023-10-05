@@ -12,7 +12,7 @@
     <BODY class="card-container">
         <div class="login-card">
             <div class="card-logo">
-                <img src="../logo.png" alt="logo" a href="../index.html">
+                <img src="../logo.png" alt="logo" a href="../index.php">
             </div>
             <div class="card-header">
                 <h1>Entrar</h1>

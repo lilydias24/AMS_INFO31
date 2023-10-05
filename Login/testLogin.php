@@ -10,10 +10,6 @@
         $CPF = str_replace(['.', '-'], '', $CPF); // Remove pontos e traço
         $senha = $_POST['senha'];
 
-        //print_r('CPF: ' . $CPF);
-        //print_r('<br>');
-        //print_r('Senha: ' . $senha);
-
         $sql = "SELECT * FROM usuario WHERE nivel = '$nivel' and CPF = '$CPF' and senha = '$senha'";
         $result = $connect->query($sql);
         //print_r($sql);

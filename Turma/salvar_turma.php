@@ -1,9 +1,9 @@
 <?php
 switch($_REQUEST["acao"]){
     case 'cadastrar':
-        $descricao = $_POST["descricao"];
+        $nome_turma = $_POST["nome_turma"];
         
-        $sql = "INSERT INTO turma (descricao) VALUE ('{$descricao}')";
+        $sql = "INSERT INTO turma (nome_turma) VALUE ('{$nome_turma}')";
         $result = $connect->query($sql) or die($connect->error);
 
         if($result == true){
@@ -16,10 +16,10 @@ switch($_REQUEST["acao"]){
     break;
     case 'editar':
         $ID_turma = $_POST["ID_turma"];
-        $descricao = $_POST["descricao"];
+        $nome_turma = $_POST["nome_turma"];
 
         $sql = "UPDATE turma
-        SET descricao='$descricao'
+        SET nome_turma='$nome_turma'
         WHERE ID_turma='$ID_turma'";
         $result = $connect->query($sql) or die($connect->error);
 

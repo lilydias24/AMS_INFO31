@@ -26,11 +26,13 @@
 		<?php
 		    include("../config.php");
 
-			$sql = "SELECT * FROM aluno AS al INNER JOIN historico AS hist ON al.matricula = hist.matricula";
-			
+			$sql = "SELECT * FROM historico AS hist INNER JOIN aluno AS al ON hist.matricula = al.matricula
+			INNER JOIN turma AS tur ON tur.ID_turma = al.ID_turma 
+			INNER JOIN informa AS inf ON hist.ID_historico = inf.ID_historico 
+			INNER JOIN status AS stts ON inf.ID_status = inf.ID_status"; 
 			$result = $connect->query($sql);
 			$qtLinhas = $result->num_rows;
-
+			
 			if($qtLinhas > 0){
 				print "<div class='rounded table-responsive text-center m-3'>";
 				print "<table class='table table-info table-hover shadow'>";
@@ -38,19 +40,21 @@
 				print "<tr>";
 				print "<th> Data - Hora </th>";             
 				print "<th> Status </th>";
+				print "<th> Matrícula </th>";				
 				print "<th> Nome </th>";
-				print "<th> Matrícula </th>";
 				print "<th> Turma </th>";
+				print "<th> ID histórico </th>";
 				print "</tr>"; 
 				print "</thead>"; 
 				while($row = $result->fetch_object()){
 				print "<tbody>"; 
 				print "<tr>";
 				print "<td>" . $row->data_hr . "</td>";
-				//print "<td>" . $row->ID_historico . "</td>";
-				print "<td>" . $row->nome . "</td>";
+				print "<td>" . $row->descricao . "</td>";
 				print "<td>" . $row->matricula . "</td>";
-				//print "<td>" . $row->ID_Turma . "</td>";
+				print "<td>" . $row->nome . "</td>";
+				print "<td>" . $row->nome_turma . "</td>";				
+				print "<td>" . $row->ID_historico . "</td>";
 				print "</tr>";
 				print "</tbody>";   
 				}
