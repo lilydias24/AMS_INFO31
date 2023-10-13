@@ -31,11 +31,11 @@
     $verif = "SELECT * FROM aluno WHERE matricula=". $comanda;
     $resultado = $connect->query($verif);
     $qtLinhas = $resultado->num_rows;
-    
+
     if($qtLinhas > 0) : 
         while($row = $resultado->fetch_object()) : ?>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"> Registro </button>
 
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"> Registro </button>
             <?php
             $consulta = "SELECT * FROM historico AS hist INNER JOIN aluno AS al ON hist.matricula = al.matricula
             INNER JOIN turma AS tur ON tur.ID_turma = al.ID_turma 
@@ -45,38 +45,37 @@
             $qtLinhasConsulta = $resultConsulta->num_rows; 
             
             if($qtLinhasConsulta > 0) :
-                while($rowCon = $resultConsulta->fetch_object()) : ?>  
+                while($rowCon = $resultConsulta->fetch_object()) :  
 
-                    <?php 
                     $teste = "SELECT * FROM cronograma WHERE ID_turma=". $rowCon->ID_turma;
                     $resultTeste = $connect->query($teste);
-                    $qtLinhasTeste = $resultTeste->num_rows; 
+                    $qtLinhasTeste = $resultTeste->num_rows;
 
-                    if($qtLinhasTeste> 0) {
+                    if($qtLinhasTeste > 0) {
                         while($rowTeste = $resultTeste->fetch_object()){
+
                             $dia = date('D');
                             date_default_timezone_set('America/Sao_Paulo');
                             $hora = date("H:i:s"); 
-                            $ID_status = $rowCon->ID_status;
-                            $ID_cronos = $rowCon->$ID_cronos;
                             // puxando a hora 2 vezes ?
-                            while($rowTeste->dia_semana == $dia){
-                                if(($rowTeste->hr_entrada = '08:00:00') && ($hora >= '07:00:00' && $hora <= '08:15:00') 
+                            if($rowTeste->dia_semana == $dia){
+
+                                if(($rowTeste->hr_entrada = '08:00:00') && ($hora >= '05:00:00' && $hora <= '08:15:00') 
                                 or ($rowTeste->hr_entrada = '13:30:00') && ($hora >= '12:30:00' && $hora <= '13:45:00'))
                                 {
-                                    // STATUS = PRESENTE 
                                     if($rowCon->ID_status == '6' && $rowCon->descricao == "Presente")
                                     {
-                                        $informa = "INSERT INTO informa (ID_historico, ID_status) VALUE ('{$ID_cronos}', '{$ID_status}')";
+                                        $ID_status = $rowCon->ID_status;
+                                        $rowCon->descricao = "Presente";                                    
                                     }
                                 } 
                                 elseif(($rowTeste->hr_entrada = '08:00:00') && ($hora >= '08:15:00' && $hora <= '10:00:00')
                                 or ($rowTeste->hr_entrada = '13:30:00') && ($hora >= '13:45:00' && $hora <= '15:30:00'))
                                 {
-                                    // STATUS = ENTRADA em Atraso
                                     if($rowCon->ID_status == '4' && $rowCon->descricao == "Entrada em Atraso")
                                     {
-                                        $informa = "INSERT INTO informa (ID_historico, ID_status) VALUE ('{$ID_cronos}', '{$ID_status}')";
+                                        $rowCon->ID_status = 4;
+                                        $rowCon->descricao = "Entrada em Atraso";                                    
                                     }
                                 } 
                                 else 
@@ -84,18 +83,20 @@
                                     // STATUS = Entrada Autorizada 
                                 }
 
-                                if((($rowTeste->hr_saida >= '12:00:00' && $rowTeste->hr_saida <= '12:35:00') && $hora >= '12:00:00') 
+                                if((($rowTeste->hr_saida >= '12:00:00' && $rowTeste->hr_saida <= '12:35:00') && $hora >= '00:00:00') 
                                 or (($rowTeste->hr_saida >= '17:00:00' && $rowTeste->hr_saida <= '17:35:00') && $hora >= '17:00:00'))
                                 {
-                                    //  echo "STATUS = AUSENTE";
-                                    if($rowCon->ID_status == '8' && $rowCon->descricao == "Ausente")
-                                    {
-                                        $informa = "INSERT INTO informa (ID_historico, ID_status) VALUE ('{$ID_cronos}', '{$ID_status}')";
-                                    }
+                                        /*$status = $rowCon->ID_status;
+                                        $historico = "";
+                                        $informa = "INSERT INTO informa (ID_historico, ID_status) VALUES ('{$historico}', '{$status}')";
+                                        echo $informa;*/
+                                        $rowCon->ID_status = 8;
+                                        $rowCon->descricao = "Ausente";
                                 } else {
-                                    print "<p class='alert alert-danger'><script> alert('Saída de Aluno NÃO Autorizada!'); </script></p>";
-                                    print "<script> location.href='index.php'; </script>";
-                                }
+                                    //print "<script class='alert alert-danger'> alert('Saída de Aluno NÃO autorizada!'); </script>";
+                                    //print "<script> location.href='index.php'; </script>";                                        
+                                }   
+                                ;                       
                             }
                         }
                     }
@@ -123,8 +124,8 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
-                                        <p class="card-text mt-3 h5"> <?php print "Status : " . $rowCon->descricao . $rowCon->ID_status . "<br>"; ?> </p>
-                                        <p class="card-text"><small class="text-body-secondary"><?php print "Data/Hora de Acesso : " . $rowCon->data_hr . "<br>"; ?></small></p>
+                                        <p class="card-text mt-3 h5"> <?php print "Status : " . $rowCon->descricao . "<br>"; ?> </p>
+                                        <p class="card-text"><small class="text-body-secondary"><?php print "Data/Hora de Acesso : " . $dt_hrAtual . "<br>"; ?></small></p>
                                     </div>
                                     <form action="" method="POST">
                                         <a href="index.php"><button type="submit" name="OK" value="registrar" class="btn btn-outline-info btn-lg m-3 mt-3">OK</button></a>
@@ -135,23 +136,37 @@
                         </div>
                     </div>          
                 <?php endwhile; ?>
-            <?php endif; ?>
-            <?php 
-            if($_SERVER["REQUEST_METHOD"] == "POST"){
-                if (isset($_POST['OK'])) {
+                <?php
+                if($_SERVER["REQUEST_METHOD"] == "POST"){
+                    if (isset($_POST['OK'])) {
 
-                    $sql = "INSERT INTO historico (data_hr, matricula) VALUE ('{$dt_hrAtual}', '{$comanda}')";
-                    $result = $connect->query($sql) ;
-          
-                    if($result == true){
-                      print "<script> alert('Cadastro Realizado com Sucesso!'); </script>";
-                      print "<script> location.href='index.php'; </script>";
-                    }else{
-                      print "<script> alert('Não foi Possível Cadastrar!'); </script>";
-                      print "<script> location.href='#'; </script>";
+                        $sql = "INSERT INTO historico (data_hr, matricula) VALUE ('{$dt_hrAtual}', '{$comanda}')";
+                        $result = $connect->query($sql) ;
+
+                        if($result == true){
+                        print "<script> alert('Cadastro Realizado com Sucesso!'); </script>";
+                        print "<script> location.href='index.php'; </script>";
+                        }else{
+                        print "<script> alert('Não foi Possível Cadastrar!'); </script>";
+                        print "<script> location.href='#'; </script>";
+                        }
+                        $ID_historico = $rowCon->ID_historico;
+                        $ID_status = $rowCon->ID_status;
+
+                        $sql = "INSERT INTO informa (ID_historico, ID_status) VALUE ('{$ID_historico}', '{$ID_status}')";
+                        $result2 = $connect->query($sql);
+                        if($result == true){
+                        print "<script> alert('Cadastro Realizado com Sucesso!'); </script>";
+                        print "<script> location.href='index.php'; </script>";
+                        }else{
+                        print "<script> alert('Não foi Possível Cadastrar!'); </script>";
+                        print "<script> location.href='#'; </script>";
+                        }
                     }
                 }
-            }
+                ?>
+            <?php endif; ?>
+            <?php 
                 // arrumar o cronograma e lista-lo no lado do operador
                 // Ver como listar a imagem do upload no acesso e também excluir
                 // Fazer fluxo para entrada autorizada e saída autorizada
