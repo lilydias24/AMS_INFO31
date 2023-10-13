@@ -41,12 +41,65 @@
             INNER JOIN turma AS tur ON tur.ID_turma = al.ID_turma 
             INNER JOIN informa AS inf ON hist.ID_historico = inf.ID_historico 
             INNER JOIN status AS stts ON inf.ID_status = inf.ID_status"; 
-            // Criar modal do registro com nome, matricula, turma, foto e status  
             $resultConsulta = $connect->query($consulta);
             $qtLinhasConsulta = $resultConsulta->num_rows; 
             
             if($qtLinhasConsulta > 0) :
                 while($rowCon = $resultConsulta->fetch_object()) : ?>  
+
+                    <?php 
+                    $teste = "SELECT * FROM cronograma WHERE ID_turma=". $rowCon->ID_turma;
+                    $resultTeste = $connect->query($teste);
+                    $qtLinhasTeste = $resultTeste->num_rows; 
+
+                    if($qtLinhasTeste> 0) {
+                        while($rowTeste = $resultTeste->fetch_object()){
+                            $dia = date('D');
+                            date_default_timezone_set('America/Sao_Paulo');
+                            $hora = date("H:i:s"); 
+                            $ID_status = $rowCon->ID_status;
+                            $ID_cronos = $rowCon->$ID_cronos;
+                            // puxando a hora 2 vezes ?
+                            while($rowTeste->dia_semana == $dia){
+                                if(($rowTeste->hr_entrada = '08:00:00') && ($hora >= '07:00:00' && $hora <= '08:15:00') 
+                                or ($rowTeste->hr_entrada = '13:30:00') && ($hora >= '12:30:00' && $hora <= '13:45:00'))
+                                {
+                                    // STATUS = PRESENTE 
+                                    if($rowCon->ID_status == '6' && $rowCon->descricao == "Presente")
+                                    {
+                                        $informa = "INSERT INTO informa (ID_historico, ID_status) VALUE ('{$ID_cronos}', '{$ID_status}')";
+                                    }
+                                } 
+                                elseif(($rowTeste->hr_entrada = '08:00:00') && ($hora >= '08:15:00' && $hora <= '10:00:00')
+                                or ($rowTeste->hr_entrada = '13:30:00') && ($hora >= '13:45:00' && $hora <= '15:30:00'))
+                                {
+                                    // STATUS = ENTRADA em Atraso
+                                    if($rowCon->ID_status == '4' && $rowCon->descricao == "Entrada em Atraso")
+                                    {
+                                        $informa = "INSERT INTO informa (ID_historico, ID_status) VALUE ('{$ID_cronos}', '{$ID_status}')";
+                                    }
+                                } 
+                                else 
+                                {
+                                    // STATUS = Entrada Autorizada 
+                                }
+
+                                if((($rowTeste->hr_saida >= '12:00:00' && $rowTeste->hr_saida <= '12:35:00') && $hora >= '12:00:00') 
+                                or (($rowTeste->hr_saida >= '17:00:00' && $rowTeste->hr_saida <= '17:35:00') && $hora >= '17:00:00'))
+                                {
+                                    //  echo "STATUS = AUSENTE";
+                                    if($rowCon->ID_status == '8' && $rowCon->descricao == "Ausente")
+                                    {
+                                        $informa = "INSERT INTO informa (ID_historico, ID_status) VALUE ('{$ID_cronos}', '{$ID_status}')";
+                                    }
+                                } else {
+                                    print "<p class='alert alert-danger'><script> alert('Saída de Aluno NÃO Autorizada!'); </script></p>";
+                                    print "<script> location.href='index.php'; </script>";
+                                }
+                            }
+                        }
+                    }
+                  ?>
                     <div class="modal-fullscreen-md-down">
                         <div class="modal fade text-center mx-auto" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
@@ -62,11 +115,15 @@
                                             <img src="../Aluno/fotos/2023.08.29-01.46.jpg" class="img-fluid rounded-start" alt="...">
                                         </div>
                                         <div class="col-md-7 ">                                                
-                                            <h5 class="card-title">  <p><?php print $rowCon->nome . "<br>" ; ?> </p> <p><?php print "Matrícula : " . $rowCon->matricula . "<br>"; ?></p> <p><?php print "Turma : " . $rowCon->nome_turma . "<br>"; ?></p> </h5>
+                                            <h5 class="card-title">  
+                                            <p><?php print $rowCon->nome . "<br>" ; ?></p> 
+                                            <p><?php print "Matrícula : " . $rowCon->matricula . "<br>"; ?></p> 
+                                            <p><?php print "Turma : " . $rowCon->nome_turma . "<br>"; ?></p> 
+                                            </h5>
                                         </div>
                                     </div>
                                     <div class="card-body">
-                                        <p class="card-text mt-3 h5"> <?php print "Status : " . $rowCon->descricao . "<br>"; ?> </p>
+                                        <p class="card-text mt-3 h5"> <?php print "Status : " . $rowCon->descricao . $rowCon->ID_status . "<br>"; ?> </p>
                                         <p class="card-text"><small class="text-body-secondary"><?php print "Data/Hora de Acesso : " . $rowCon->data_hr . "<br>"; ?></small></p>
                                     </div>
                                     <form action="" method="POST">
@@ -95,11 +152,10 @@
                     }
                 }
             }
-                // Fazer fluxo de status de acordo com a hora de acesso
-                // Arrumar modal do registro com nome, matricula, turma, foto e status  
-                // Ver como criar ligação de tabelas para informa
                 // arrumar o cronograma e lista-lo no lado do operador
-                // Ver como listar a imagem do upload e deletar ela
+                // Ver como listar a imagem do upload no acesso e também excluir
+                // Fazer fluxo para entrada autorizada e saída autorizada
+                // Arrumar visualização do modal de registro
             ?>
         <?php endwhile; ?>
     <?php endif; ?>        
