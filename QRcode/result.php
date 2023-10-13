@@ -45,7 +45,7 @@
             $qtLinhasConsulta = $resultConsulta->num_rows; 
             
             if($qtLinhasConsulta > 0) :
-                while($rowCon = $resultConsulta->fetch_object()) :  
+                if($rowCon = $resultConsulta->fetch_object()) :  
 
                     $teste = "SELECT * FROM cronograma WHERE ID_turma=". $rowCon->ID_turma;
                     $resultTeste = $connect->query($teste);
@@ -95,8 +95,7 @@
                                 } else {
                                     //print "<script class='alert alert-danger'> alert('Saída de Aluno NÃO autorizada!'); </script>";
                                     //print "<script> location.href='index.php'; </script>";                                        
-                                }   
-                                ;                       
+                                }                     
                             }
                         }
                     }
@@ -135,7 +134,7 @@
                             </div>
                         </div>
                     </div>          
-                <?php endwhile; ?>
+                
                 <?php
                 if($_SERVER["REQUEST_METHOD"] == "POST"){
                     if (isset($_POST['OK'])) {
@@ -165,6 +164,7 @@
                     }
                 }
                 ?>
+            <?php endif; ?>
             <?php endif; ?>
             <?php 
                 // arrumar o cronograma e lista-lo no lado do operador
