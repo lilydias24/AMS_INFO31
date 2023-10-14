@@ -63,14 +63,14 @@
                                 if(($rowTeste->hr_entrada == '08:00:00') && ($hora >= '07:00:00' && $hora <= '08:15:00') 
                                 or ($rowTeste->hr_entrada == '13:30:00') && ($hora >= '12:30:00' && $hora <= '13:45:00'))
                                 {                                   
-                                    echo $rowCon->ID_status = 6;
-                                    echo $rowCon->descricao = "Presente";                                    
+                                    $rowCon->ID_status = 6;
+                                    $rowCon->descricao = "Presente";                                    
                                 } 
                                 elseif(($rowTeste->hr_entrada == '08:00:00') && ($hora >= '08:15:00' && $hora <= '10:00:00')
                                 or ($rowTeste->hr_entrada == '13:30:00') && ($hora >= '13:45:00' && $hora <= '15:30:00'))
                                 {                                    
-                                    echo $rowCon->ID_status = 4;
-                                    echo $rowCon->descricao = "Entrada em Atraso";                                    
+                                    $rowCon->ID_status = 4;
+                                    $rowCon->descricao = "Entrada em Atraso";                                    
                                 } 
                                 else 
                                 {
@@ -78,8 +78,8 @@
                                     or ($rowTeste->hr_saida == '12:25:00' && $hora >= '12:00:00')
                                     or ($rowTeste->hr_saida == '17:10:00' && $hora >= '17:00:00'))
                                     {
-                                        echo $rowCon->ID_status = 8;
-                                        echo $rowCon->descricao = "Ausente";
+                                        $rowCon->ID_status = 8;
+                                        $rowCon->descricao = "Ausente";
                                     } 
                                     else
                                     {
