@@ -57,49 +57,40 @@
                             $dia = date('D');
                             date_default_timezone_set('America/Sao_Paulo');
                             $hora = date("H:i:s"); 
-                            // puxando a hora 2 vezes ?
+                            //puxando a hora 2 vezes ?
                             if($rowTeste->dia_semana == $dia){
 
-                                if(($rowTeste->hr_entrada = '08:00:00') && ($hora >= '05:00:00' && $hora <= '08:15:00') 
-                                or ($rowTeste->hr_entrada = '13:30:00') && ($hora >= '12:30:00' && $hora <= '13:45:00'))
-                                {
-                                    if($rowCon->ID_status == '6' && $rowCon->descricao == "Presente")
-                                    {
-                                        $ID_status = $rowCon->ID_status;
-                                        $rowCon->descricao = "Presente";                                    
-                                    }
+                                if(($rowTeste->hr_entrada == '08:00:00') && ($hora >= '07:00:00' && $hora <= '08:15:00') 
+                                or ($rowTeste->hr_entrada == '13:30:00') && ($hora >= '12:30:00' && $hora <= '13:45:00'))
+                                {                                   
+                                    echo $rowCon->ID_status = 6;
+                                    echo $rowCon->descricao = "Presente";                                    
                                 } 
-                                elseif(($rowTeste->hr_entrada = '08:00:00') && ($hora >= '08:15:00' && $hora <= '10:00:00')
-                                or ($rowTeste->hr_entrada = '13:30:00') && ($hora >= '13:45:00' && $hora <= '15:30:00'))
-                                {
-                                    if($rowCon->ID_status == '4' && $rowCon->descricao == "Entrada em Atraso")
-                                    {
-                                        $rowCon->ID_status = 4;
-                                        $rowCon->descricao = "Entrada em Atraso";                                    
-                                    }
+                                elseif(($rowTeste->hr_entrada == '08:00:00') && ($hora >= '08:15:00' && $hora <= '10:00:00')
+                                or ($rowTeste->hr_entrada == '13:30:00') && ($hora >= '13:45:00' && $hora <= '15:30:00'))
+                                {                                    
+                                    echo $rowCon->ID_status = 4;
+                                    echo $rowCon->descricao = "Entrada em Atraso";                                    
                                 } 
                                 else 
                                 {
-                                    // STATUS = Entrada Autorizada 
-                                }
-
-                                if((($rowTeste->hr_saida >= '12:00:00' && $rowTeste->hr_saida <= '12:35:00') && $hora >= '00:00:00') 
-                                or (($rowTeste->hr_saida >= '17:00:00' && $rowTeste->hr_saida <= '17:35:00') && $hora >= '17:00:00'))
-                                {
-                                        /*$status = $rowCon->ID_status;
-                                        $historico = "";
-                                        $informa = "INSERT INTO informa (ID_historico, ID_status) VALUES ('{$historico}', '{$status}')";
-                                        echo $informa;*/
-                                        $rowCon->ID_status = 8;
-                                        $rowCon->descricao = "Ausente";
-                                } else {
-                                    //print "<script class='alert alert-danger'> alert('Saída de Aluno NÃO autorizada!'); </script>";
-                                    //print "<script> location.href='index.php'; </script>";                                        
-                                }                     
+                                    if(($rowTeste->hr_saida == '11:35:00' && $hora >= '11:20:00') 
+                                    or ($rowTeste->hr_saida == '12:25:00' && $hora >= '12:00:00')
+                                    or ($rowTeste->hr_saida == '17:10:00' && $hora >= '17:00:00'))
+                                    {
+                                        echo $rowCon->ID_status = 8;
+                                        echo $rowCon->descricao = "Ausente";
+                                    } 
+                                    else
+                                    {
+                                        print "<script class='alert alert-danger'> alert('Saída de Aluno NÃO autorizada!'); </script>";
+                                        print "<script> location.href='index.php'; </script>";                                        
+                                    }        
+                                }              
                             }
                         }
                     }
-                  ?>
+                    ?>
                     <div class="modal-fullscreen-md-down">
                         <div class="modal fade text-center mx-auto" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
@@ -124,7 +115,7 @@
                                     </div>
                                     <div class="card-body">
                                         <p class="card-text mt-3 h5"> <?php print "Status : " . $rowCon->descricao . "<br>"; ?> </p>
-                                        <p class="card-text"><small class="text-body-secondary"><?php print "Data/Hora de Acesso : " . $dt_hrAtual . "<br>"; ?></small></p>
+                                        <p class="card-text"><small class="text-body-secondary"><?php print "Data/Hora de Acesso : " . $hora . "<br>"; ?></small></p>
                                     </div>
                                     <form action="" method="POST">
                                         <a href="index.php"><button type="submit" name="OK" value="registrar" class="btn btn-outline-info btn-lg m-3 mt-3">OK</button></a>
@@ -133,38 +124,36 @@
                                 </div>
                             </div>
                         </div>
-                    </div>          
-                
+                    </div> 
+                <?php endif; ?>         
                 <?php
                 if($_SERVER["REQUEST_METHOD"] == "POST"){
                     if (isset($_POST['OK'])) {
 
-                        $sql = "INSERT INTO historico (data_hr, matricula) VALUE ('{$dt_hrAtual}', '{$comanda}')";
+                        $sql = "INSERT INTO historico (data_hr, matricula) VALUES ('{$dt_hrAtual}', '{$comanda}')";
                         $result = $connect->query($sql) ;
 
                         if($result == true){
-                        print "<script> alert('Cadastro Realizado com Sucesso!'); </script>";
+                        print "<script> alert('Acesso Realizado com Sucesso!'); </script>";
                         print "<script> location.href='index.php'; </script>";
                         }else{
-                        print "<script> alert('Não foi Possível Cadastrar!'); </script>";
+                        print "<script> alert('Não foi Possível Registrar o Acesso!'); </script>";
                         print "<script> location.href='#'; </script>";
                         }
-                        $ID_historico = $rowCon->ID_historico;
+
+                        $sql2 = "SELECT * FROM historico ORDER BY ID_historico DESC";
+                        $result2 = $connect->query($sql2);
+                        $rowR2 = $result2->fetch_object();
+
+                        $ID_historico = $rowR2->ID_historico;
                         $ID_status = $rowCon->ID_status;
 
-                        $sql = "INSERT INTO informa (ID_historico, ID_status) VALUE ('{$ID_historico}', '{$ID_status}')";
-                        $result2 = $connect->query($sql);
-                        if($result == true){
-                        print "<script> alert('Cadastro Realizado com Sucesso!'); </script>";
-                        print "<script> location.href='index.php'; </script>";
-                        }else{
-                        print "<script> alert('Não foi Possível Cadastrar!'); </script>";
-                        print "<script> location.href='#'; </script>";
-                        }
+                        $sql4 = "INSERT INTO informa (ID_historico, ID_status) VALUES ('{$ID_historico}', '{$ID_status}')";
+                        $result4 = $connect->query($sql4);
                     }
                 }
                 ?>
-            <?php endif; ?>
+            
             <?php endif; ?>
             <?php 
                 // arrumar o cronograma e lista-lo no lado do operador
