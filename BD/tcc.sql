@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 05-Out-2023 às 04:36
+-- Tempo de geração: 14-Out-2023 às 01:46
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `aluno` (
 --
 
 INSERT INTO `aluno` (`matricula`, `nome`, `email`, `num_responsavel`, `foto`, `ID_turma`) VALUES
-('2021319363', 'Emilly Nascimento Dias', 'emilly.2021319363@aluno.iffar.edu.br', '(55) 9-9233-6928', 0x4172726179, 8);
+('2021319363', 'Emilly Nascimento Dias', 'emilly.2021319363@aluno.iffar.edu.br', '(55) 9-9233-6928', 0x4172726179, 11);
 
 -- --------------------------------------------------------
 
@@ -68,11 +68,11 @@ CREATE TABLE IF NOT EXISTS `cronograma` (
 --
 
 INSERT INTO `cronograma` (`ID_cronos`, `dia_semana`, `hr_entrada`, `hr_saida`, `ID_turma`) VALUES
-(31, 'Mon', '12:36:00', '12:38:00', 11),
-(32, 'Tue', '17:35:00', '17:39:00', 11),
+(31, 'Mon', '08:00:00', '12:25:00', 11),
+(32, 'Tue', '08:00:00', '17:10:00', 11),
 (33, 'Wed', '14:39:00', '14:40:00', 11),
 (34, 'Thu', '13:35:00', '16:39:00', 11),
-(35, 'Fri', '16:35:00', '18:35:00', 11),
+(35, 'Fri', '08:00:00', '12:25:00', 11),
 (71, 'Mon', '08:00:00', '17:10:00', 11),
 (72, 'Tue', '07:45:00', '17:05:00', 11),
 (73, 'Wed', '08:00:00', '12:25:00', 11),
@@ -92,15 +92,21 @@ CREATE TABLE IF NOT EXISTS `historico` (
   `matricula` char(10) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`ID_historico`),
   KEY `matricula` (`matricula`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `historico`
 --
 
 INSERT INTO `historico` (`ID_historico`, `data_hr`, `matricula`) VALUES
-(12, '2023-10-03 11:41:00', '2021319363'),
-(24, '2023-10-05 00:46:46', '2021319363');
+(42, '2023-10-13 20:44:13', '2021319363'),
+(43, '2023-10-13 20:45:53', '2021319363'),
+(44, '2023-10-13 20:53:04', '2021319363'),
+(45, '2023-10-13 21:52:11', '2021319363'),
+(46, '2023-10-13 21:53:08', '2021319363'),
+(47, '2023-10-13 21:53:42', '2021319363'),
+(48, '2023-10-13 22:37:11', '2021319363'),
+(49, '2023-10-13 22:43:09', '2021319363');
 
 -- --------------------------------------------------------
 
@@ -121,7 +127,14 @@ CREATE TABLE IF NOT EXISTS `informa` (
 --
 
 INSERT INTO `informa` (`ID_historico`, `ID_status`) VALUES
-(12, 6);
+(42, 8),
+(43, 8),
+(44, 4),
+(45, 4),
+(46, 8),
+(47, 8),
+(48, 6),
+(49, 6);
 
 -- --------------------------------------------------------
 
@@ -134,7 +147,7 @@ CREATE TABLE IF NOT EXISTS `status` (
   `ID_status` int NOT NULL AUTO_INCREMENT,
   `descricao` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`ID_status`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `status`
@@ -142,7 +155,10 @@ CREATE TABLE IF NOT EXISTS `status` (
 
 INSERT INTO `status` (`ID_status`, `descricao`) VALUES
 (4, 'Entrada em Atraso'),
-(6, 'Presente');
+(6, 'Presente'),
+(8, 'Ausente'),
+(10, 'Saída Autorizada'),
+(12, 'Entrada Autorizada');
 
 -- --------------------------------------------------------
 
