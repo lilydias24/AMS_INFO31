@@ -8,7 +8,7 @@
 } 
 .container-principal {
     font-family: Georgia, Times, 'Times New Roman', serif; 
-    min-height: 120vh;
+    min-height: 150vh;
     background: linear-gradient(to right, #03f2ffb6, #1eb211dc);
     background-size: auto;
     background-repeat: no-repeat;
@@ -43,7 +43,7 @@ nav {     /* definir as propriedades do menu */
     justify-content: center;
 }
 .action_btn {
-    background-color: darkgreen;
+    background-color: rgba(1, 116, 1, 0.938);
     color: #fff;
     padding: 1rem 2rem;
     border: none;
@@ -58,7 +58,7 @@ nav {     /* definir as propriedades do menu */
     scale: 1.05rem;
     color: darkgreen;
     background-color: #fff;
-    padding: 1.5rem 2.5rem;
+    padding: 1.2rem 2.2rem;
     margin-left: 8px;
 }
 .action_btn:active {
@@ -144,7 +144,7 @@ h1:hover {
 footer{     /*Definir rodapé*/
     width: 100%; 
     height: 18%; 
-    background-color: #b50909; 
+    background-color: #b50909f5; 
     color: #fff; 
     position: relative; 
     float: left; 
@@ -157,12 +157,8 @@ footer .footer-text {
     float: left; 
 }
 footer .footer-text a {
-    color: #fff; 
+    text-decoration: none;
+    text-shadow: #fff;
+    font-weight: bolder;
+    color :forestgreen;
 }
-/*.card-form .form-item .icon {
-    position: absolute;
-    top: .82rem;
-    left: 1.4rem;
-    font-size: 1.3rem;
-    opacity: .4;
-}*/

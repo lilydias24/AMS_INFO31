@@ -11,7 +11,7 @@
 .login-card {
     width: 450px;
     background: rgba(255,255,255, .5);
-    padding: 3rem;
+    padding: 1.8rem;
     border-radius: 10px;
     position: relative;
 }
@@ -27,7 +27,7 @@
     margin-bottom: 1rem;
 }
 .card-logo img {
-    width: 200px;
+    width: 250px;
 }
 .card-logo, 
 .card-header {
@@ -44,9 +44,9 @@
     margin-bottom: 2rem;
 }
 .card-header h1 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 600;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
 }
 .card-header h1 + div {
     font-size: calc(1rem * .8);

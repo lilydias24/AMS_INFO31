@@ -10,7 +10,7 @@
 	<BODY class="container-principal">
 		<header>
 			<div class="logo">
-				<a href="index.html"><img src="logo.png" alt="logo"></a>
+				<img src="logo.png" alt="logo">
 			</div>
 			<nav>
 				<a href="./Login/login.php" class="action_btn">Entre</a>
@@ -25,23 +25,25 @@
 				<a href="#close" class="close"> X </a>
 				<h1> Sobre o Sistema </h1>
 				<p><strong> Monitor de Acesso : </strong> 
-				Este sistema busca solucionar a dificuldade no monitoramento manual do fluxo de alunos no Iffar Uruguaiana. 
-				Através do escaneamento de QR Code/matrícula de cada aluno. Possibilitando segurança e controle no gerenciamento da assistência estudantil, 
-				sobre dados do acesso ou egresso de discentes ou pessoas externas as dependencias da instituição.</p>
+				O presente sistema busca auxiliar no monitoramento do fluxo de alunos no Iffar Uruguaiana. 
+				Os acessos ao campus serão registrados através do escaneamento do QR Code/matrícula de cada aluno. 
+				Possibilitando segurança e controle no gerenciamento da assistência estudantil, 
+				sobre o histórico dos discentes dependencias da instituição.</p>
 			</div>
 		</div>
 		<div id="openModal1" class="modalDialog"> 
 			<div>
 				<a href="#close" title="Close" class="close"> X </a>
 				<h1> Escaner </h1>
-				<p> O escaner fará a leitura do código de cada aluno, registrando suas informações no sistema.</p>
+				<p> O escaner fará a leitura do código QR de cada aluno, presente na carteira de estudante,
+					assim, registrando suas informações no sistema.</p>
 			</div>
 		</div>
 		<div id="openModal2" class="modalDialog"> 
 			<div>
 				<a href="#close" title="Close" class="close"> X </a>
 				<h1> Histórico </h1>
-				<p> Será possivel consultar o Histórico em tempo real, do fluxo de docentes no campus do IFFar Uruguaina.
+				<p> Será possivel consultar o Histórico em tempo real, do fluxo de discentes no campus do IFFar Uruguaina.
 				Possibilitando a geração de relatórios completos - indivuduais ou coletivos - para a gestão da assistência estudantil.
 				</p>
 			</div>
@@ -49,18 +51,18 @@
 		<footer>
 			<div class="footer-text">
 				<h3> Sobre o sistema </h3>
-				<p> Para entender a proposta do trabalho de conclusão de curso ao desenvolver este sistema : 
-				<a href="#openModal">Clique aqui</a>.</p>
+				<p> Para entender a proposta deste trabalho de conclusão : <br> 
+				<a href="#openModal">Clique aqui</a></p>
 			</div>
 			<div class="footer-text">
-				<h3> Automatização de Entrada/Saída</h3>
-				<p> Para saber qual será o novo modo de controle automático : 
-				<a href="#openModal1">Clique aqui</a>.</p>
+				<h3> Automatização de Entradas/Saídas</h3>
+				<p> Para saber sobre o modo de controle automático : <br> 
+				<a href="#openModal1">Clique aqui</a></p>
 			</div>
 			<div class="footer-text">
 				<h3> Histórico </h3>
-				<p> Para compreender outras vantagens do sistema : 
-				<a href="#openModal2">Clique aqui</a>.</p>
+				<p> Para compreender outras vantagens do sistema : <br> 
+				<a href="#openModal2">Clique aqui</a></p>
 			</div>
 		</footer>
 	</BODY>
