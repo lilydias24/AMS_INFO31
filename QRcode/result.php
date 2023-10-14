@@ -136,7 +136,7 @@
                         if($result == true){
                         print "<script> alert('Acesso Realizado com Sucesso!'); </script>";
                         print "<script> location.href='index.php'; </script>";
-                        }else{
+                        } else {
                         print "<script> alert('Não foi Possível Registrar o Acesso!'); </script>";
                         print "<script> location.href='#'; </script>";
                         }
@@ -153,15 +153,9 @@
                     }
                 }
                 ?>
-            
             <?php endif; ?>
-            <?php 
-                // arrumar o cronograma e lista-lo no lado do operador
-                // Ver como listar a imagem do upload no acesso e também excluir
-                // Fazer fluxo para entrada autorizada e saída autorizada
-                // Arrumar visualização do modal de registro
-            ?>
         <?php endwhile; ?>
     <?php endif; ?>        
   </div>
 </BODY>
+</html>

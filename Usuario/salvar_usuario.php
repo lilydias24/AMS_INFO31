@@ -5,7 +5,7 @@ switch($_REQUEST["acao"]){
         $CPF = $_POST["CPF"];
         $email = $_POST["email"];
         $senha = $_POST["senha"];
-        $CPF = str_replace(['.', '-'], '', $CPF); // Remove pontos e traço
+        $CPF = str_replace(['.', '-'], '', $CPF);
 
         $sql = "INSERT INTO usuario (nivel, CPF, email, senha) 
         VALUES ('{$nivel}', '{$CPF}', '{$email}', '{$senha}')";
@@ -29,11 +29,15 @@ switch($_REQUEST["acao"]){
         SET nivel='$nivel', email='$email', senha='$senha' 
         WHERE CPF='$CPF'";
 
-        $result = $connect->query($sql) or die($connect->error);
+        $result = $connect->query($sql);
+        var_dump($sql) ;
+        var_dump($result);
 
         if($result == true){
-            print "<script> alert('Edição Realizada com Sucesso!'); </script>";
-            print "<script> location.href='?page=listar'; </script>";
+            
+
+            //print "<script> alert('Edição Realizada com Sucesso!'); </script>";
+            //print "<script> location.href='?page=listar'; </script>";
         }else{
             print "<script> alert('Não foi Possível Editar!'); </script>";
             print "<script> location.href='?page=listar'; </script>";

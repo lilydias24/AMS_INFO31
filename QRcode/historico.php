@@ -63,7 +63,7 @@
 			} else {
 				print "<p class='alert alert-danger'>Não Foraram Encontrados Resultados!</p>";
 			}
-		
 		?>
 	</div>
 </BODY>
+</html>

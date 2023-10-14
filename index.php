@@ -46,7 +46,7 @@
 				</p>
 			</div>
 		</div>
-		<footer><!-- rodapé da página -->
+		<footer>
 			<div class="footer-text">
 				<h3> Sobre o sistema </h3>
 				<p> Para entender a proposta do trabalho de conclusão de curso ao desenvolver este sistema : 
