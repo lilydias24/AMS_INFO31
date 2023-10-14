@@ -1,3 +1,4 @@
+<?php include_once("../Login/autenticar.php"); ?>
 <div class="container-sm rounded p-4 text-bg-success text-center">
     <p class="p-3 h4 rounded shadow">Lista de Alunos</p>
     <hr>

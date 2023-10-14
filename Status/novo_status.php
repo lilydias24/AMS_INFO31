@@ -1,3 +1,4 @@
+<?php include_once("../Login/autenticar.php"); ?>
 <div class="container-sm rounded p-4 text-bg-success text-center" style="width: 70%;">
     <h4>Cadastrar Status</h4>
     <hr>

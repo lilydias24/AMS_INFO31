@@ -1,19 +1,16 @@
 <?php
     session_start();
-    //print_r($_REQUEST);
     if(isset($_POST['submit']) && !empty($_POST['nivel']) && !empty($_POST['CPF']) && !empty($_POST['senha']) )
     {
         // Acesso concedido
         include_once('../config.php');
         $nivel = $_POST['nivel'];
         $CPF = $_POST['CPF'];
-        $CPF = str_replace(['.', '-'], '', $CPF); // Remove pontos e traço
+        $CPF = str_replace(['.', '-'], '', $CPF); 
         $senha = $_POST['senha'];
 
         $sql = "SELECT * FROM usuario WHERE nivel = '$nivel' and CPF = '$CPF' and senha = '$senha'";
         $result = $connect->query($sql);
-        //print_r($sql);
-        //print_r($result);
 
         if(mysqli_num_rows($result) < 1)
         {
@@ -23,8 +20,7 @@
             unset($_SESSION['senha']);
             header('Location: login.php');
         } else {
-                if($nivel == 'admin'){
-                //print_r('Usuario encontrado no banco');
+            if($nivel == 'admin'){
                 $_SESSION['nivel'] = $nivel;
                 $_SESSION['CPF'] = $CPF;
                 $_SESSION['senha'] = $senha;

@@ -8,6 +8,5 @@ Pendentes :
 // Fazer o fluxo de entrada autorizada e saída autorizada
 // Arrumar visualização do modal de registro para abertura automática
 // Usuário não está editando
-// Sessão Login incompleta
 // Campo de busca
 // Gerar Relatórios

@@ -1,3 +1,4 @@
+<?php include_once("../Login/autenticar.php"); ?>
 <?php
 switch($_REQUEST["acao"]){
     case 'cadastrar':

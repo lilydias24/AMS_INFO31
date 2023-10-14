@@ -1,3 +1,4 @@
+<?php include_once("../Login/autenticar.php"); ?>
 <div class="container-sm rounded p-4 text-bg-success text-center">
     <h4>Cronogramas de Turmas</h4>
     <hr>

@@ -7,7 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="index.css">
 		<title> TCC - Início </title>
 	</HEAD>
-	<BODY class="container-principal"><!-- cabeçalho da página -->
+	<BODY class="container-principal">
 		<header>
 			<div class="logo">
 				<a href="index.html"><img src="logo.png" alt="logo"></a>
@@ -15,7 +15,7 @@
 			<nav>
 				<a href="./Login/login.php" class="action_btn">Entre</a>
 			</nav>
-		</header><!-- conteudo da página -->
+		</header>
 		<h1> Sistema de Monitoramento de Acesso ao Campus IFFar Uruguaiana </h1>
 		<section id="banner">
 			<img src="IFFar.jpg" alt="banner">

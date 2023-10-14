@@ -1,3 +1,6 @@
+<?php
+include_once("../Login/autenticar.php");
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <HEAD>

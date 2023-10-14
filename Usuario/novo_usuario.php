@@ -1,3 +1,4 @@
+<?php include_once("../Login/autenticar.php"); ?>
 <div class="container-sm rounded p-4 text-bg-success text-center" style="width: 70%;">
     <form action="?page=salvar" method="POST">
     <p class="p-2 h4 rounded shadow">Cadastrar Operador</p>
