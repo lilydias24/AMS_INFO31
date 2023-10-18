@@ -31,7 +31,8 @@ include_once("../Login/autenticar.php");
     date_default_timezone_set('America/Sao_Paulo');
     $dt_hrAtual = date('Y-m-d H:i:s');
 
-    $verif = "SELECT * FROM aluno WHERE matricula=". $comanda;
+    $verif = "SELECT * FROM aluno AS al INNER JOIN turma AS tur ON al.ID_turma = tur.ID_turma
+    WHERE matricula=". $comanda;
     $resultado = $connect->query($verif);
     $qtLinhas = $resultado->num_rows;
 
@@ -60,6 +61,7 @@ include_once("../Login/autenticar.php");
                             $dia = date('D');
                             date_default_timezone_set('America/Sao_Paulo');
                             $hora = date("H:i:s"); 
+                            //$hora = '08:00:00';
                             //puxando a hora 2 vezes ?
                             if($rowTeste->dia_semana == $dia){
 
@@ -110,9 +112,9 @@ include_once("../Login/autenticar.php");
                                         </div>
                                         <div class="col-md-7 ">                                                
                                             <h5 class="card-title">  
-                                            <p><?php print $rowCon->nome . "<br>" ; ?></p> 
-                                            <p><?php print "Matrícula : " . $rowCon->matricula . "<br>"; ?></p> 
-                                            <p><?php print "Turma : " . $rowCon->nome_turma . "<br>"; ?></p> 
+                                            <p><?php print $row->nome . "<br>" ; ?></p> 
+                                            <p><?php print "Matrícula : " . $row->matricula . "<br>"; ?></p> 
+                                            <p><?php print "Turma : " . $row->nome_turma . "<br>"; ?></p> 
                                             </h5>
                                         </div>
                                     </div>

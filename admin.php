@@ -9,17 +9,6 @@
         header('Location: ./Login/login.php');
     }
     $logado = $_SESSION['CPF'];
-    /*
-    if(!empty($_GET['search'])){
-        $data = $_GET['search'];
-        echo $data;
-        $sql = "SELECT * FROM usuario 
-        WHERE matricula LIKE '%$data%' or CPF LIKE '%$data%' or email LIKE '%$data%'";
-    } 
-    else {        
-        $sql = "SELECT * FROM usuario";
-    }
-    */
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -38,15 +27,10 @@
             <li class="nav-item mt-5"><button type="button" class="btn btn-danger"><a href="./Login/sair.php" class="text-decoration-none text-light">Sair</a></button></li>
         </ul>
     </nav>
-    <!--<div class="box-search" display:flex; justify-content:center; gap:.1%;>
-        <input type="search" class="form-control w-20" placeholder="Pesquisar" id="pesquisar"> 
-        <button onclick="searchData" class="w3-btn w3-green">
-        <i class="material-symbols-outlined w3-large">search</i></button>
-    </div>-->
     <div class="container-xxl mt-4 text-center">    
-    <div class="alert alert-success mx-auto w-50">
-        <?php echo "<h6>Bem Vindo! <u>$logado</u></h6>"; ?>
-    </div>
+        <div class="alert alert-success mx-auto w-50">
+            <?php echo "<h6><i>Olá! $logado</i></h6>"; ?>
+        </div>
         <div class="row">
             <div class="col-md-3"><a href="./Aluno/index_aluno.php" class="text-decoration-none">
                 <div class="card shadow m-3 text-bg-success p-5">
@@ -108,16 +92,6 @@
                 </div>
             </div></a>
         </div>
+    </div>
 </BODY>
-    <script>
-      /*  var search = document.getElementById('pesquisar');
-        search.addEventListener("keydown", function(event){
-            if(event.key === "Enter"){
-                searchData();
-            }
-        });
-        function searchData(){
-            window.location = 'admin.php?search='+search.value;
-        }*/
-    </script>
 </html>
