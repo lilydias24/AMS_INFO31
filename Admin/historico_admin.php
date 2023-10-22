@@ -10,7 +10,7 @@
     <title>Histórico</title>		
 </head>		
 <BODY class="container-xxl" style="background-color: #79dfa5;">
-<nav class="rounded bg-light mt-3">
+	<nav class="rounded bg-light mt-3">
         <ul class="nav nav-pills nav-justified"> 
             <li class="nav-item"><a href="#" class="float-start"><img src="../logo.png" style="width:250px;" alt="logo"></a></img></li>
             <li class="nav-item mt-5"><button type="button" class="btn btn-outline-success"><a href="../admin.php" class="text-decoration-none text-black" aria-current="page">
