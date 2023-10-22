@@ -9,4 +9,4 @@ Pendentes :
 // Arrumar visualização do modal de registro para abertura automática
 // Usuário não está editando
 // Campo de busca
-// Gerar Relatórios
+// Gerar Relatórios -> https://github.com/dompdf/dompdf/releases
