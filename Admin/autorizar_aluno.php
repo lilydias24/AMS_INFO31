@@ -1,5 +1,4 @@
 <?php
-// formulário para justificar o motivo da saída do aluno
 // update status do aluno no histórico para saída autorizada
 ?>
 
