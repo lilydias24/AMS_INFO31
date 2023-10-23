@@ -5,8 +5,8 @@ Pendentes :
 
 // Arrumar o cronograma (não está editando) e listá-lo no lado do operador
 // Ver como listar a imagem do upload no modal de acesso e também como excluí-la do diretório
-// Fazer o fluxo de entrada autorizada e saída autorizada
+// Corrigir o fluxo de entrada autorizada e saída autorizada
 // Arrumar visualização do modal de registro para abertura automática
 // Usuário não está editando
-// Campo de busca
 // Gerar Relatórios -> https://github.com/dompdf/dompdf/releases
+// Login só aceita 1 usuário logado por vez

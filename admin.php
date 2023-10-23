@@ -18,19 +18,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>    
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
-    <title>Início Admin</title>
+    <title>Principal Admin</title>
 </HEAD>
 <BODY class="container-xxl" style="background-color: #79dfa5;">
     <nav class="rounded shadow bg-light mt-3">
         <ul class="nav nav-justified"> 
             <li class="nav-item"><a href="#" class="float-start"><img src="./logo.png" style="width:250px;" alt="logo"></a></img></li>
-            <li class="nav-item mt-5"><button type="button" class="btn btn-danger"><a href="./Login/sair.php" class="text-decoration-none text-light">Sair</a></button></li>
+            <li class="nav-item mt-3 p-3"><?php echo "<h6 class='alert alert-success text-success mx-auto w-75'>Usuário <i>$logado</i></h6>"; ?></li>
+            <li class="nav-item mt-5 m-3"><button type="button" class="btn btn-danger"><a href="./Login/sair.php" class="text-decoration-none text-light">Sair</a></button></li>
         </ul>
     </nav>
-    <div class="container-xxl mt-4 text-center">    
-        <div class="alert alert-success mx-auto w-50">
-            <?php echo "<h6><i>Olá! $logado</i></h6>"; ?>
-        </div>
+    <div class="container-xxl mt-5 text-center">    
         <div class="row">
             <div class="col-md-3"><a href="./Aluno/index_aluno.php" class="text-decoration-none">
                 <div class="card shadow m-3 text-bg-success p-5">
@@ -58,12 +56,12 @@
                 <div class="card shadow m-3 text-bg-success p-5">
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="25" fill="currentColor" class="bi bi-person-square" viewBox="0 0 16 16"><path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/><path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"/>
                     </svg><br>
-                    <p>Gerenciar Operadores</p>
+                    <p>Gerenciar Usuários</p>
                 </div>
             </div></a>
         </div>
         <div class="row">
-            <div class="col-md-3"><a href="./Admin/autorizar_aluno.php" class="text-decoration-none">
+            <div class="col-md-3"><a href="./Admin/buscar_aluno.php" class="text-decoration-none">
                 <div class="card shadow m-3 text-bg-success p-5">
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="25" fill="currentColor" class="bi bi-person-check" viewBox="0 0 16 16"><path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm1.679-4.493-1.335 2.226a.75.75 0 0 1-1.174.144l-.774-.773a.5.5 0 0 1 .708-.708l.547.548 1.17-1.951a.5.5 0 1 1 .858.514ZM11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z"/>
                     </svg><br>

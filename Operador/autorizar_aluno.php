@@ -52,7 +52,7 @@ if ($qtLinhasConsulta > 0) {
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content text-bg-success">
                 <div class="modal-header">
-                    <h4 class="modal-title m-2" id="exampleModalLabel">Autorizar Saída</h4>
+                    <h4 class="modal-title m-2" id="exampleModalLabel">Autorizar Entrada</h4>
                     <hr>
                     <button type="button" class="btn-close btn btn-danger" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -61,7 +61,7 @@ if ($qtLinhasConsulta > 0) {
                         <form action="" method="POST">
                             <label class="h5 mt-3">Matrícula :</label>
                             <input type="number" name="matricula" value="<?php print $busca; ?>" readonly class="form-control text-center w-50 mx-auto">
-                            <label class="h5 mt-3">Motivo da Saída :</label>
+                            <label class="h5 mt-3">Motivo :</label>
                             <input type="text" name="motivo" class="form-control text-center w-50 mx-auto">
                             <button type="submit" name="autorizar" class="btn btn-info btn-lg m-3 mt-3">Autorizar</button>
                         </form>
@@ -74,18 +74,18 @@ if ($qtLinhasConsulta > 0) {
 </div>
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    var_dump($_POST);
+    //var_dump($_POST);
     if (isset($_POST['autorizar'])) {
-        //$ID_status = 10 && $descricao = "Saída Autorizada";
-        $sql = "UPDATE informa SET ID_status = 10
+        //$ID_status = 12 && $descricao = "Entrada Autorizada";
+        $sql = "UPDATE informa SET ID_status = 12
                             WHERE ID_historico = (SELECT MAX(ID_historico) 
                             FROM historico WHERE matricula = '$busca')";
         $result = $connect->query($sql);
         if ($result == true) {
-            print "<script> alert('Saída Autorizada com Sucesso!'); </script>";
+            print "<script> alert('Entrada Autorizada com Sucesso!'); </script>";
             print "<script> location.href='autorizar_aluno.php'; </script>";
         } else {
-            print "<script> alert('Não foi Possível Autorizar a Saída!'); </script>";
+            print "<script> alert('Não foi Possível Autorizar a Entrada!'); </script>";
             print "<script> location.href='autorizar_aluno.php'; </script>";
         }
     }

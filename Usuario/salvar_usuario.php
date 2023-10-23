@@ -13,7 +13,7 @@ switch($_REQUEST["acao"]){
         $result = $connect->query($sql) or die($connect->error);
 
         if($result == true){
-            print "<script> alert('Cadastro Realizado com Sucesso!'); </script>";
+            print "<script> alert('Cadastro de Usuário Realizado com Sucesso!'); </script>";
             print "<script> location.href='?page=listar'; </script>";
         }else{
             print "<script> alert('Não foi Possível Cadastrar!'); </script>";
@@ -35,10 +35,8 @@ switch($_REQUEST["acao"]){
         var_dump($result);
 
         if($result == true){
-            
-
-            //print "<script> alert('Edição Realizada com Sucesso!'); </script>";
-            //print "<script> location.href='?page=listar'; </script>";
+            print "<script> alert('Edição de Usuário Realizada com Sucesso!'); </script>";
+            print "<script> location.href='?page=listar'; </script>";
         }else{
             print "<script> alert('Não foi Possível Editar!'); </script>";
             print "<script> location.href='?page=listar'; </script>";
@@ -50,7 +48,7 @@ switch($_REQUEST["acao"]){
         $result = $connect->query($sql) or die($connect->error);
 
         if($result == true){
-            print "<script> alert('Exclusão Realizada com Sucesso!'); </script>";
+            print "<script> alert('Exclusão de Usuário Realizada com Sucesso!'); </script>";
             print "<script> location.href='?page=listar'; </script>";
         }else{
             print "<script> alert('Não foi Possível Excluir!'); </script>";

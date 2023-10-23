@@ -7,7 +7,7 @@
         $row = $result->fetch_object();
     ?>
     <form action="?page=salvar" method="POST">
-    <p class="p-2 h4 rounded shadow">Editar Operador</p>
+    <p class="p-2 h4 rounded shadow">Editar Usuário</p>
     <hr>
         <input type="hidden" name="acao" value="editar">
         <input type="hidden"  name="CPF" value="<?php print $row->CPF; ?>">            
