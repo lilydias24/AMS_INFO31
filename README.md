@@ -8,5 +8,5 @@ Pendentes :
 // Corrigir o fluxo de entrada autorizada e saída autorizada
 // Arrumar visualização do modal de registro para abertura automática
 // Usuário não está editando
-// Gerar Relatórios -> https://github.com/dompdf/dompdf/releases
-// Login só aceita 1 usuário logado por vez
+// Gerar Relatórios com informações solicitadas pelo admin
+// Login só aceita 1 usuário logado por vez no mesmo navegador -> problema ??
