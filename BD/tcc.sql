@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 14-Out-2023 às 01:46
+-- Tempo de geração: 26-Out-2023 às 20:03
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -44,6 +44,8 @@ CREATE TABLE IF NOT EXISTS `aluno` (
 --
 
 INSERT INTO `aluno` (`matricula`, `nome`, `email`, `num_responsavel`, `foto`, `ID_turma`) VALUES
+('2019321631', 'Claudia Kussuma Flores Lesama', 'claudia.2019321631@aluno.iffar.edu.br', '(55) 9-8448-1000', 0x4172726179, 11),
+('2020316278', 'João Rodrigues', 'mikael.2021317171@aluno.iffar.edu.br', '(55) 9-9233-8659', 0x4172726179, 11),
 ('2021319363', 'Emilly Nascimento Dias', 'emilly.2021319363@aluno.iffar.edu.br', '(55) 9-9233-6928', 0x4172726179, 11);
 
 -- --------------------------------------------------------
@@ -70,14 +72,9 @@ CREATE TABLE IF NOT EXISTS `cronograma` (
 INSERT INTO `cronograma` (`ID_cronos`, `dia_semana`, `hr_entrada`, `hr_saida`, `ID_turma`) VALUES
 (31, 'Mon', '08:00:00', '12:25:00', 11),
 (32, 'Tue', '08:00:00', '17:10:00', 11),
-(33, 'Wed', '14:39:00', '14:40:00', 11),
+(33, 'Wed', '14:39:00', '12:25:00', 11),
 (34, 'Thu', '13:35:00', '16:39:00', 11),
-(35, 'Fri', '08:00:00', '12:25:00', 11),
-(71, 'Mon', '08:00:00', '17:10:00', 11),
-(72, 'Tue', '07:45:00', '17:05:00', 11),
-(73, 'Wed', '08:00:00', '12:25:00', 11),
-(74, 'Thu', '07:50:00', '17:30:00', 11),
-(75, 'Fri', '08:00:00', '11:35:00', 11);
+(35, 'Fri', '08:00:00', '12:25:00', 11);
 
 -- --------------------------------------------------------
 
@@ -92,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `historico` (
   `matricula` char(10) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`ID_historico`),
   KEY `matricula` (`matricula`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `historico`
@@ -106,7 +103,8 @@ INSERT INTO `historico` (`ID_historico`, `data_hr`, `matricula`) VALUES
 (46, '2023-10-13 21:53:08', '2021319363'),
 (47, '2023-10-13 21:53:42', '2021319363'),
 (48, '2023-10-13 22:37:11', '2021319363'),
-(49, '2023-10-13 22:43:09', '2021319363');
+(49, '2023-10-13 22:43:09', '2021319363'),
+(50, '2023-10-16 16:19:10', '2020316278');
 
 -- --------------------------------------------------------
 
@@ -134,7 +132,8 @@ INSERT INTO `informa` (`ID_historico`, `ID_status`) VALUES
 (46, 8),
 (47, 8),
 (48, 6),
-(49, 6);
+(49, 6),
+(50, 8);
 
 -- --------------------------------------------------------
 

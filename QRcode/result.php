@@ -63,7 +63,8 @@ include_once("../Login/autenticar.php");
                             $hora = date("H:i:s"); 
                             //$hora = '08:00:00';
                             //puxando a hora 2 vezes ?
-                            if($rowTeste->dia_semana == $dia){
+                            if($rowTeste->dia_semana == $dia){ 
+                                // Saída autorizada
 
                                 if(($rowTeste->hr_entrada == '08:00:00') && ($hora >= '07:00:00' && $hora <= '08:15:00') 
                                 or ($rowTeste->hr_entrada == '13:30:00') && ($hora >= '12:30:00' && $hora <= '13:45:00'))
