@@ -11,7 +11,7 @@ include_once("../Login/autenticar.php");
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
     <title>Histórico</title>		
 </head>		
-<BODY class="container-xxl" style="background-color: #79dfa5;">
+<BODY class="container-xxl" style="background-color: #4dd494 ;">
     <nav class="rounded shadow bg-light mt-3">
 		<ul class="nav nav-pills nav-justified">
         <li class="nav-item"><a href="./index.html" class="float-start"><img src="../logo.png" style="width:250px;" alt="logo"></a></img></li>
@@ -32,7 +32,7 @@ include_once("../Login/autenticar.php");
 			$consulta = "SELECT * FROM informa AS inf INNER JOIN historico AS hist ON inf.ID_historico = hist.ID_historico
             INNER JOIN status AS stts ON inf.ID_status = stts.ID_status
             INNER JOIN aluno AS al ON hist.matricula = al.matricula
-			INNER JOIN turma AS tur ON al.ID_turma = tur.ID_turma"; 
+			INNER JOIN turma AS tur ON al.ID_turma = tur.ID_turma ORDER BY hist.ID_historico DESC"; 
             $resultConsulta = $connect->query($consulta);
             $qtLinhasConsulta = $resultConsulta->num_rows; 
 			

@@ -15,7 +15,7 @@
     <title>Autorizar Entrada</title>
 </head>
 
-<BODY class="container-xxl text-center" style="background-color: #79dfa5;">
+<BODY class="container-xxl text-center" style="background-color: #4dd494 ;">
     <nav class="rounded bg-light mt-3">
         <ul class="nav nav-pills nav-justified">
             <li class="nav-item"><a href="#" class="float-start"><img src="../logo.png" style="width:250px;" alt="logo"></a></img></li>
@@ -27,7 +27,7 @@
     </nav>
     <h4 class="mt-5 text-center text-success">Autorizar Entrada de Aluno</h4>
     <hr class="w-50 mx-auto text-success p-2">
-    <form method="POST" class="form-inline">
+    <form method="GET" class="form-inline">
         <div class="input-group mt-3 mx-auto shadow" style="width: 35%;">
             <input class="form-control text-center" name="filtro" type="search" aria-label="Search" placeholder="Informe a Matrícula do Aluno">
             <div class="input-group-append">
@@ -41,7 +41,7 @@
     </form>
 </BODY>
 <?php
-if (isset($_POST['filtro']) && !empty($_POST['filtro'])) {
+if (isset($_GET['filtro']) && !empty($_GET['filtro'])) {
     include_once("autorizar_aluno.php");
 }
 ?>

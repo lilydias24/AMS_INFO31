@@ -2,7 +2,7 @@
 
 include("../config.php");
 
-$busca = $_POST['filtro'];
+$busca = $_GET['filtro'];
 $consulta = "SELECT * FROM historico AS hist INNER JOIN aluno AS al ON hist.matricula = al.matricula
 INNER JOIN turma AS tur ON tur.ID_turma = al.ID_turma 
 INNER JOIN informa AS inf ON hist.ID_historico = inf.ID_historico  
@@ -62,11 +62,10 @@ if ($qtLinhasConsulta > 0) {
                             <label class="h5 mt-3">Matrícula :</label>
                             <input type="number" name="matricula" value="<?php print $busca; ?>" readonly class="form-control text-center w-50 mx-auto">
                             <label class="h5 mt-3">Motivo :</label>
-                            <input type="text" name="motivo" class="form-control text-center w-50 mx-auto">
+                            <input type="text" name="motivo" class="form-control text-center w-50 mx-auto" required>
                             <button type="submit" name="autorizar" class="btn btn-info btn-lg m-3 mt-3">Autorizar</button>
                         </form>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -74,19 +73,32 @@ if ($qtLinhasConsulta > 0) {
 </div>
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    //var_dump($_POST);
+
     if (isset($_POST['autorizar'])) {
-        //$ID_status = 12 && $descricao = "Entrada Autorizada";
-        $sql = "UPDATE informa SET ID_status = 12
-                            WHERE ID_historico = (SELECT MAX(ID_historico) 
-                            FROM historico WHERE matricula = '$busca')";
+
+        date_default_timezone_set('America/Sao_Paulo');
+        $dt_hrAtual = date('Y-m-d H:i:s');
+        $matricula = $busca;
+        $motivo = $_POST["motivo"];
+
+        $sql = "INSERT INTO historico (data_hr, matricula, motivo) VALUES ('{$dt_hrAtual}', '{$matricula}', '{$motivo}')";
         $result = $connect->query($sql);
         if ($result == true) {
             print "<script> alert('Entrada Autorizada com Sucesso!'); </script>";
-            print "<script> location.href='autorizar_aluno.php'; </script>";
+            print "<script> location.href='../QRcode/historico.php'; </script>";
+            
+            $sql2 = "SELECT * FROM historico ORDER BY ID_historico DESC";
+            $result2 = $connect->query($sql2);
+            $rowR2 = $result2->fetch_object();
+
+            $ID_historico = $rowR2->ID_historico;
+            $ID_status = 12;
+            //$ID_status = 12 && $descricao = "Entrada Autorizada";
+            $sql4 = "INSERT INTO informa (ID_historico, ID_status) VALUES ('{$ID_historico}', '{$ID_status}')";
+            $result4 = $connect->query($sql4);
         } else {
             print "<script> alert('Não foi Possível Autorizar a Entrada!'); </script>";
-            print "<script> location.href='autorizar_aluno.php'; </script>";
+            print "<script> location.href='buscar_aluno.php'; </script>";
         }
     }
 }

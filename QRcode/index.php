@@ -11,7 +11,7 @@ include_once("../Login/autenticar.php");
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
     <title>Escaner - QR Code</title>		
 </head>		
-<BODY class="container-xxl" style="background-color: #79dfa5;">
+<BODY class="container-xxl" style="background-color: #4dd494 ;">
     <nav class="rounded shadow bg-light mt-3">
 		<ul class="nav nav-pills nav-justified">
             <li class="nav-item"><a href="#" class="float-start"><img src="../logo.png" style="width:250px;" alt="logo"></a></img></li>

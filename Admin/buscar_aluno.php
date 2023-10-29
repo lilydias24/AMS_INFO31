@@ -1,7 +1,3 @@
-<?php
-// update status do aluno no histórico para saída autorizada
-?>
-
 <?php include_once("../Login/autenticar.php");    ?>
 <!DOCTYPE HTML>
 <html lang="pt-BR">
@@ -27,7 +23,7 @@
     </nav>
     <h4 class="mt-5 text-center text-success">Autorizar Saída de Aluno</h4>
     <hr class="w-50 mx-auto text-success p-2">
-    <form method="POST" class="form-inline">
+    <form method="GET" class="form-inline">
         <div class="input-group mt-3 mx-auto shadow" style="width: 35%;">
             <input class="form-control text-center" name="filtro" type="search" aria-label="Search" placeholder="Busque pela Matrícula de um Aluno">
             <div class="input-group-append">
@@ -41,7 +37,7 @@
     </form>
 </BODY>
 <?php
-if (isset($_POST['filtro']) && !empty($_POST['filtro'])) {
+if (isset($_GET['filtro']) && !empty($_GET['filtro'])) {
     include_once("autorizar_aluno.php");
 }
 ?>

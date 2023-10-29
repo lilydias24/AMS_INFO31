@@ -13,7 +13,7 @@ include_once("../Login/autenticar.php");
     <title>Cronograma de Turmas</title>
 </HEAD>
 
-<BODY class="container-xxl" style="background-color: #79dfa5;">
+<BODY class="container-xxl" style="background-color: #4dd494 ;">
     <nav class="rounded shadow bg-light mt-3">
 		<ul class="nav nav-pills nav-justified">
         <li class="nav-item"><a href="./index.html" class="float-start"><img src="../logo.png" style="width:250px;" alt="logo"></a></img></li>

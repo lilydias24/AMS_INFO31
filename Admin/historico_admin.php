@@ -27,7 +27,7 @@
             $consulta = "SELECT * FROM informa AS inf INNER JOIN historico AS hist ON inf.ID_historico = hist.ID_historico
             INNER JOIN status AS stts ON inf.ID_status = stts.ID_status
             INNER JOIN aluno AS al ON hist.matricula = al.matricula
-			INNER JOIN turma AS tur ON al.ID_turma = tur.ID_turma"; 
+			INNER JOIN turma AS tur ON al.ID_turma = tur.ID_turma ORDER BY hist.ID_historico DESC"; 
             $resultConsulta = $connect->query($consulta);
             $qtLinhasConsulta = $resultConsulta->num_rows; 
 			
