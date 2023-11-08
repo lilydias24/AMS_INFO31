@@ -10,7 +10,7 @@
         <p class="p-2 h4 rounded shadow">Editar Aluno</p>
     <hr>
         <input type="hidden" name="acao" value="editar">
-        <input type="hidden" name="matricula" value="<?php print $row->matricula; ?>">
+        <input type="hidden" name="matricula" value="<?php print $row->matricula; ?>" readonly>
         <div class="m-3 text-center">
             <label for="matricula" class="h5 m-2">Matrícula :</label>
             <span class="badge bg-info">10 dígitos</span>
@@ -36,7 +36,7 @@
                     $sql = "SELECT * FROM turma";
                     $result = $connect->query($sql);
                     while($row = $result->fetch_object()){
-                        print "<option selected='". $row->ID_turma ."'>" . $row->nome_turma;
+                        print "<option value='". $row->ID_turma ."'>" . $row->nome_turma;
                         print "</option>";
                     }
                 ?>

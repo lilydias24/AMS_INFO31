@@ -39,8 +39,8 @@
             </div>
         </div>
         <div class="col-md-5">
-            <div class="input-group mt-3 shadow">
-                <input class="form-control text-center" name="filtro" type="search" aria-label="Search" placeholder="Informe a Matrícula que deseja encontrar" >
+            <div class="input-group mt-3 shadow w-75">
+                <input class="form-control text-center" name="filtro" type="search" aria-label="Search" placeholder="Procure por uma Matrícula" >
                 <div class="input-group-append">
                     <button class="btn btn-success" name="buscar" type="submit">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="35" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">

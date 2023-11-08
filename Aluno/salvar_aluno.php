@@ -12,13 +12,14 @@ switch($_REQUEST["acao"]){
         if(isset($_FILES['foto']))
         {
             $tipo = strtolower(substr($_FILES['foto']['name'], -3)); //Pegando extensão do arquivo
-            $new_name = date("Y.m.d-H.i.") . $tipo; //Definindo um novo nome para o arquivo
+            $new_name = date("Y.m.d-H.i") . $tipo; //Definindo um novo nome para o arquivo
             $dir = './fotos/'; //Diretório para uploads
     
             move_uploaded_file($_FILES['foto']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
             echo '<div class="alert alert-success" role="alert" align="center">
                 <img src="./fotos/' . $new_name . '" class="img img-responsive img-thumbnail" width="200"> 
                 </div>';
+            $foto = $new_name;
         } 
 
         $sql = "INSERT INTO aluno (matricula, nome, email, num_responsavel, foto, ID_turma) 
@@ -41,6 +42,19 @@ switch($_REQUEST["acao"]){
         $foto = $_FILES["foto"];
         $ID_turma = $_POST["ID_turma"];
 
+        if(isset($_FILES['foto']))
+        {
+            $tipo = strtolower(substr($_FILES['foto']['name'], -3)); //Pegando extensão do arquivo
+            $new_name = date("Y.m.d-H.i") . $tipo; //Definindo um novo nome para o arquivo
+            $dir = './fotos/'; //Diretório para uploads
+    
+            move_uploaded_file($_FILES['foto']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
+            echo '<div class="alert alert-success" role="alert" align="center">
+                <img src="./fotos/' . $new_name . '" class="img img-responsive img-thumbnail" width="200"> 
+                </div>';
+            $foto = $new_name ;
+        } 
+
         $sql = "UPDATE aluno
         SET matricula='$matricula', nome='$nome', email='$email', num_responsavel='$num_responsavel', foto='$foto', ID_turma='$ID_turma' 
         WHERE matricula='$matricula'";
@@ -61,8 +75,7 @@ switch($_REQUEST["acao"]){
         $foto = $_FILES["foto"];
         if(isset($_FILES['foto']))
         {
-            $new_name = date("Y.m.d-H.i.") . $tipo; 
-            $dir = './fotos/'; 
+            
             unlink($_FILES['foto']['tmp_name'], $dir.$new_name); 
         } 
 

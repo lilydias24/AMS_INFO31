@@ -16,9 +16,9 @@
             print "<th> Nome </td>";             
             print "<th> Email </td>";             
             print "<th> Responsável </td>";    
-           // print "<th> Foto </td>";                      
+            //print "<th> Foto </td>";                      
             print "<th> Turma </th>";
-            print "<th> Ações </th>";
+            print "<th colspan='2'> Ações </th>";
             print "</tr>"; 
             while($row = $result->fetch_object()){
             print "<tr>";
@@ -26,10 +26,11 @@
             print "<td>" . $row->nome . "</td>"; 
             print "<td>" . $row->email . "</td>"; 
             print "<td>" . $row->num_responsavel . "</td>"; 
-          //  print "<td>" . $row->foto . "</td>"; 
+            //print "<td>" . $row->foto . "</td>"; 
             print "<td>" . $row->nome_turma . "</td>";
             print "<td> 
-                    <button onclick=\"location.href='?page=editar&matricula=".$row->matricula. "';\" class='btn btn-success'>Editar</button>
+                    <button onclick=\"location.href='?page=editar&matricula=".$row->matricula. "';\" class='btn btn-success'>Editar</button> </td>";
+            print "<td>
                     <button onclick=\"if(confirm('Tem Certeza de que Deseja Excluir este Aluno?'))
                     {location.href='?page=salvar&acao=excluir&matricula=".$row->matricula. "';}
                     else{false;}\" class='btn btn-danger'>Excluir</button>

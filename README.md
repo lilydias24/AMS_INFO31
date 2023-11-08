@@ -5,5 +5,5 @@ Pendentes :
 
 // Arrumar o cronograma (não está editando)
 // Usuário não está editando
-// Ver como listar a imagem do upload no modal de acesso e também como excluí-la do diretório
+// Ver como excluir a imagem do upload no diretório
 // Relatório não exibe a logo
