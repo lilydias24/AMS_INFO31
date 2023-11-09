@@ -69,16 +69,16 @@ switch($_REQUEST["acao"]){
         }     
     break;
     case 'excluir':
+        $sql1 = "SELECT * FROM aluno WHERE matricula=".$_REQUEST["matricula"];
+        $test = $connect->query($sql1) or die($connect->error);
+        while($row = $test->fetch_object()){
+            if(isset($row->foto))
+            {
+                 unlink("../Aluno/fotos/$row->foto"); 
+            } 
+        }
         $sql = "DELETE FROM aluno WHERE matricula=".$_REQUEST["matricula"];
         $result = $connect->query($sql) or die($connect->error);
-       
-        $foto = $_FILES["foto"];
-        if(isset($_FILES['foto']))
-        {
-            
-            unlink($_FILES['foto']['tmp_name'], $dir.$new_name); 
-        } 
-
         if($result == true){
             print "<script> alert('Exclusão Realizada com Sucesso!'); </script>";
             print "<script> location.href='?page=listar'; </script>";

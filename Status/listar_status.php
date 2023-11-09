@@ -1,5 +1,5 @@
 <?php include_once("../Login/autenticar.php"); ?>
-<div class="container-sm rounded p-4 text-bg-success text-center">
+<div class="container-sm rounded p-4 text-bg-success text-center ">
     <h4>Lista de Status</h4>
     <hr>
     <?php

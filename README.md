@@ -5,5 +5,5 @@ Pendentes :
 
 // Arrumar o cronograma (não está editando)
 // Usuário não está editando
-// Ver como excluir a imagem do upload no diretório
 // Relatório não exibe a logo
+// Ajustar fluxo de acessos autorizados

@@ -9,7 +9,7 @@
         $qtLinhas = $result->num_rows;
 
         if($qtLinhas > 0){
-            print "<div class='rounded table-responsive text-center m-5'>";
+            print "<div class='rounded table-responsive text-center m-3'>";
             print "<table class='table table-light table-hover shadow'>";            
             print "<tr>";
             print "<th> Matrícula </td>";   
