@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 26-Out-2023 às 20:03
+-- Tempo de geração: 08-Nov-2023 às 21:37
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `aluno` (
   `nome` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   `email` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   `num_responsavel` varchar(16) COLLATE utf8mb4_general_ci NOT NULL,
-  `foto` blob,
+  `foto` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `ID_turma` int NOT NULL,
   PRIMARY KEY (`matricula`),
   KEY `ID_turma` (`ID_turma`) USING BTREE
@@ -44,9 +44,10 @@ CREATE TABLE IF NOT EXISTS `aluno` (
 --
 
 INSERT INTO `aluno` (`matricula`, `nome`, `email`, `num_responsavel`, `foto`, `ID_turma`) VALUES
-('2019321631', 'Claudia Kussuma Flores Lesama', 'claudia.2019321631@aluno.iffar.edu.br', '(55) 9-8448-1000', 0x4172726179, 11),
-('2020316278', 'João Rodrigues', 'mikael.2021317171@aluno.iffar.edu.br', '(55) 9-9233-8659', 0x4172726179, 11),
-('2021319363', 'Emilly Nascimento Dias', 'emilly.2021319363@aluno.iffar.edu.br', '(55) 9-9233-6928', 0x4172726179, 11);
+('2019321631', 'Claudia Kussuma Flores Lesama', 'claudia.2019321631@aluno.iffar.edu.br', '(55) 9-8448-1000', '2023.10.30-16.48.png', 8),
+('2020316278', 'João Rodrigues', 'mikael.2021317171@aluno.iffar.edu.br', '(55) 9-9233-8659', '2023.10.29-04.33.png', 14),
+('2021319309', 'Bianca Fernandes Ramos', 'lulubfr7@gmail.com', '(55) 9-8423-8887', '2023.10.30-19.20.png', 11),
+('2021319363', 'Emilly Nascimento Dias', 'emilly.2021319363@aluno.iffar.edu.br', '(55) 9-9233-6928', '2023.10.16-18.55.jpg', 11);
 
 -- --------------------------------------------------------
 
@@ -63,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `cronograma` (
   `ID_turma` int NOT NULL,
   PRIMARY KEY (`ID_cronos`),
   KEY `ID_turma` (`ID_turma`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `cronograma`
@@ -74,7 +75,12 @@ INSERT INTO `cronograma` (`ID_cronos`, `dia_semana`, `hr_entrada`, `hr_saida`, `
 (32, 'Tue', '08:00:00', '17:10:00', 11),
 (33, 'Wed', '14:39:00', '12:25:00', 11),
 (34, 'Thu', '13:35:00', '16:39:00', 11),
-(35, 'Fri', '08:00:00', '12:25:00', 11);
+(35, 'Fri', '08:00:00', '12:25:00', 11),
+(76, 'Mon', '08:00:00', '12:25:00', 8),
+(77, 'Tue', '08:00:00', '17:10:00', 8),
+(78, 'Wed', '08:00:00', '11:35:00', 8),
+(79, 'Thu', '08:00:00', '17:10:00', 8),
+(80, 'Fri', '13:30:00', '17:10:00', 8);
 
 -- --------------------------------------------------------
 
@@ -85,26 +91,30 @@ INSERT INTO `cronograma` (`ID_cronos`, `dia_semana`, `hr_entrada`, `hr_saida`, `
 DROP TABLE IF EXISTS `historico`;
 CREATE TABLE IF NOT EXISTS `historico` (
   `ID_historico` int NOT NULL AUTO_INCREMENT,
-  `data_hr` datetime DEFAULT NULL,
+  `data_hr` datetime NOT NULL,
   `matricula` char(10) COLLATE utf8mb4_general_ci NOT NULL,
+  `motivo` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`ID_historico`),
   KEY `matricula` (`matricula`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `historico`
 --
 
-INSERT INTO `historico` (`ID_historico`, `data_hr`, `matricula`) VALUES
-(42, '2023-10-13 20:44:13', '2021319363'),
-(43, '2023-10-13 20:45:53', '2021319363'),
-(44, '2023-10-13 20:53:04', '2021319363'),
-(45, '2023-10-13 21:52:11', '2021319363'),
-(46, '2023-10-13 21:53:08', '2021319363'),
-(47, '2023-10-13 21:53:42', '2021319363'),
-(48, '2023-10-13 22:37:11', '2021319363'),
-(49, '2023-10-13 22:43:09', '2021319363'),
-(50, '2023-10-16 16:19:10', '2020316278');
+INSERT INTO `historico` (`ID_historico`, `data_hr`, `matricula`, `motivo`) VALUES
+(42, '2023-10-13 20:44:13', '2021319363', NULL),
+(43, '2023-10-10 20:45:53', '2021319363', NULL),
+(44, '2023-10-13 20:53:04', '2021319363', NULL),
+(45, '2023-10-13 21:52:11', '2021319363', NULL),
+(46, '2023-10-13 21:53:08', '2021319363', NULL),
+(47, '2023-10-13 21:53:42', '2021319363', NULL),
+(48, '2023-10-13 22:37:11', '2021319363', NULL),
+(49, '2023-10-13 22:43:09', '2021319363', NULL),
+(50, '2023-10-16 16:19:10', '2020316278', NULL),
+(61, '2023-10-28 18:41:32', '2021319363', 'Projeto'),
+(62, '2023-10-28 18:40:35', '2021319363', 'Aula Cancelada'),
+(63, '2023-11-07 14:44:53', '2021319363', NULL);
 
 -- --------------------------------------------------------
 
@@ -133,7 +143,9 @@ INSERT INTO `informa` (`ID_historico`, `ID_status`) VALUES
 (47, 8),
 (48, 6),
 (49, 6),
-(50, 8);
+(50, 8),
+(61, 12),
+(62, 10);
 
 -- --------------------------------------------------------
 
@@ -146,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `status` (
   `ID_status` int NOT NULL AUTO_INCREMENT,
   `descricao` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`ID_status`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `status`

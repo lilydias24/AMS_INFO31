@@ -45,7 +45,7 @@ if ($qtLinhasConsulta > 0) {
     print "</table>";
     print "</div>";
 } else {
-    print "<p class='alert alert-danger text-center m-3'>Não Foraram Encontrados Resultados!</p>";
+    print "<p class='alert alert-danger text-center m-3 w-50 mx-auto'>Não Foraram Encontrados Resultados!</p>";
 }
 ?>
 <div class="modal-fullscreen-md-down">
