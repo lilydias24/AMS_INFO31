@@ -11,8 +11,7 @@ $dados .= "<head>";
 $dados .= "<meta charset='UTF-8'>";
 $dados .= "<meta name='viewport' content='width=device-width, initial-scale=1'>";
 $dados .= "<title>Relatório de Acesso</title>";
-$dados .= '<img src="../logo.png" alt="logo">';
-$dados .= '</img>';
+$dados .= "<img src='logo.png'>";
 $dados .= "<style>
 h4 { text-align : center;   font-size : 20px;   color : darkgreen; }
 img { width:250px; }
@@ -23,7 +22,7 @@ td { text-align: center;   height: 30px; }
 </style>";
 $dados .= "</head>";
 $dados .= "<BODY>";
-$dados .= "<h4>Relatório de Registros Solicitados em $dt_hrAtual</h4>";
+$dados .= "<h4>Relatório de Acessos - Solicitado em $dt_hrAtual</h4>";
 $dados .= "<hr>";
 
 
@@ -156,11 +155,14 @@ $dados .= "</body>";
 $dados .= "</html>"; 
 
 use Dompdf\Dompdf; // Nomespace do DOM
-$dompdf = new Dompdf();  // Instancia e classe DOM
+use Dompdf\Options; // Nomespace do DOM
+$options = new Options();
+$options->set('chroot',realpath(''));
+$dompdf = new Dompdf($options);  // Instancia e classe DOM
 $dompdf-> loadHtml($dados); // Instancia o loadHtml e envia o conteúdo do PDF
 $dompdf->set_option('defaultFont', 'Times New Roman');
 $dompdf->setPaper('A4', 'portrait'); // formato | landscape -> Paisagem
 $dompdf->render(); // Rendeniza HTML -> PDF
-$dompdf->stream(); // Gera o PDF
+$dompdf->stream('Relatório_IFFar'); // Gera o PDF
 
 ?>

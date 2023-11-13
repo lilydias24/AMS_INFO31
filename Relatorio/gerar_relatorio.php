@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Buscar Registro</title>
 </head>
@@ -21,11 +23,12 @@
                 </svg></a></button></li>
         </ul>
     </nav>
-    <h4 class="mt-5 text-center text-success">Buscar Registro</h4>
+    <h4 class="mt-5 text-center text-success">Buscar Registros</h4>
     <hr class="w-50 mx-auto text-success p-2">
     <form method="GET" class="form-inline" action="">
-    <div class="row justify-content-center">
-        <div class="col-md-5">
+    <div class="row justify-content-center mx-auto">
+        <div class="col-md-5">                
+            <div class="row w-75 text-light"><h6>Data Inicial  >>  Data Final</h6></div>
             <div class="input-group mt-3 shadow w-75">
                 <input class="form-control text-center p-2" name="data_inicio" type="date">        
                 <input class="form-control text-center p-2" name="data_final" type="date">
@@ -38,9 +41,10 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-4">
+        <div class="row w-75 text-light"><h6>Matrícula</h6></div>
             <div class="input-group mt-3 shadow w-75">
-                <input class="form-control text-center" name="filtro" type="search" aria-label="Search" placeholder="Procure por uma Matrícula" >
+                <input class="form-control text-center" name="filtro" type="search" aria-label="Search"  id="matricula" placeholder="xxxxxxxxxx" >
                 <div class="input-group-append">
                     <button class="btn btn-success" name="buscar" type="submit">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="35" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -53,6 +57,14 @@
     </div>
 </form>
 </BODY>
+</html>
+<script>
+    $(document).ready(function () {
+        $('#matricula').inputmask({
+            mask: '9999999999' 
+        });
+    });
+</script>
 <?php
 include("../config.php");
 
@@ -70,6 +82,9 @@ if (isset($_GET['filtro']) && !empty($_GET['filtro'])) {
         $resultConsulta = $connect->query($consulta);
         $qtLinhasConsulta = $resultConsulta->num_rows;
         if ($qtLinhasConsulta > 0) {
+            print "<a href='relatorio.php?filtro=$busca&data_inicio=$data_inicio&data_final=$data_final' class='text-decoration-none'><button type='button' class='btn btn-success p-5'> Gerar Relatório 
+                <svg xmlns='http://www.w3.org/2000/svg' width='25' height='25' fill='currentColor' class='bi bi-file-text-fill' viewBox='0 0 16 16'><path d='M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1z'/>
+                </svg></button></a>";
             print "<div class='rounded table-responsive text-center m-5'>";
             print "<table class='table table-light table-hover shadow'>";
             print "<thead class='table-info'>";
@@ -80,7 +95,6 @@ if (isset($_GET['filtro']) && !empty($_GET['filtro'])) {
             print "<th> Status </th>";
             print "<th> Responsável </th>";
             print "<th> Data - Hora </th>";
-            print "<th> Gerar Relatório</th>";
             print "</tr>";
             print "</thead>";
             while ($rowCon = $resultConsulta->fetch_object()) {
@@ -92,9 +106,6 @@ if (isset($_GET['filtro']) && !empty($_GET['filtro'])) {
                 print "<td>" . $rowCon->descricao . "</td>";
                 print "<td>" . $rowCon->num_responsavel . "</td>";
                 print "<td>" . $rowCon->data_hr . "</td>";
-                print "<td><a href='relatorio.php?filtro=$busca&data_inicio=$data_inicio&data_final=$data_final'><button type='button' class='btn btn-success''>
-                <svg xmlns='http://www.w3.org/2000/svg' width='25' height='25' fill='currentColor' class='bi bi-file-text-fill' viewBox='0 0 16 16'><path d='M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1z'/>
-                </svg></button></a></td>";
                 print "</tr>";
                 print "</tbody>";
             }
@@ -114,6 +125,9 @@ if (isset($_GET['filtro']) && !empty($_GET['filtro'])) {
         $qtLinhasConsulta = $resultConsulta->num_rows;
 
         if ($qtLinhasConsulta > 0) {
+            print "<a href='relatorio.php?filtro=$busca' class='text-decoration-none'><button type='button' class='btn btn-success mt-5 p-3'> <i>Gerar Relatório</i>
+                <svg xmlns='http://www.w3.org/2000/svg' width='25' height='25' fill='currentColor' class='bi bi-file-text-fill' viewBox='0 0 16 16'><path d='M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1z'/>
+                </svg></button></a>";
             print "<div class='rounded table-responsive text-center m-5'>";
             print "<table class='table table-light table-hover shadow'>";
             print "<thead class='table-info'>";
@@ -124,7 +138,6 @@ if (isset($_GET['filtro']) && !empty($_GET['filtro'])) {
             print "<th> Status </th>";
             print "<th> Responsável </th>";
             print "<th> Data - Hora </th>";
-            print "<th> Gerar Relatório</th>";
             print "</tr>";
             print "</thead>";
             while ($rowCon = $resultConsulta->fetch_object()) {
@@ -136,9 +149,6 @@ if (isset($_GET['filtro']) && !empty($_GET['filtro'])) {
                 print "<td>" . $rowCon->descricao . "</td>";
                 print "<td>" . $rowCon->num_responsavel . "</td>";
                 print "<td>" . $rowCon->data_hr . "</td>";
-                print "<td><a href='relatorio.php?filtro=$busca'><button type='button' class='btn btn-success''>
-                <svg xmlns='http://www.w3.org/2000/svg' width='25' height='25' fill='currentColor' class='bi bi-file-text-fill' viewBox='0 0 16 16'><path d='M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1z'/>
-                </svg></button></a></td>";
                 print "</tr>";
                 print "</tbody>";
             }
@@ -161,6 +171,9 @@ if (isset($_GET['filtro']) && !empty($_GET['filtro'])) {
     $resultConsulta = $connect->query($consulta);
     $qtLinhasConsulta = $resultConsulta->num_rows;
     if ($qtLinhasConsulta > 0) {
+        print "<a href='relatorio.php?data_inicio=$data_inicio&data_final=$data_final' class='text-decoration-none'><button type='button' class='btn btn-success'> Gerar Relatório
+        <svg xmlns='http://www.w3.org/2000/svg' width='25' height='25' fill='currentColor' class='bi bi-file-text-fill' viewBox='0 0 16 16'><path d='M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1z'/>
+        </svg></button></a>";
         print "<div class='rounded table-responsive text-center m-5'>";
         print "<table class='table table-light table-hover shadow'>";
         print "<thead class='table-info'>";
@@ -171,7 +184,6 @@ if (isset($_GET['filtro']) && !empty($_GET['filtro'])) {
         print "<th> Status </th>";
         print "<th> Responsável </th>";
         print "<th> Data - Hora </th>";
-        print "<th> Gerar Relatório</th>";
         print "</tr>";
         print "</thead>";
         while ($rowCon = $resultConsulta->fetch_object()) {
@@ -183,9 +195,6 @@ if (isset($_GET['filtro']) && !empty($_GET['filtro'])) {
             print "<td>" . $rowCon->descricao . "</td>";
             print "<td>" . $rowCon->num_responsavel . "</td>";
             print "<td>" . $rowCon->data_hr . "</td>";
-            print "<td><a href='relatorio.php?data_inicio=$data_inicio&data_final=$data_final'><button type='button' class='btn btn-success''>
-            <svg xmlns='http://www.w3.org/2000/svg' width='25' height='25' fill='currentColor' class='bi bi-file-text-fill' viewBox='0 0 16 16'><path d='M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1z'/>
-            </svg></button></a></td>";
             print "</tr>";
             print "</tbody>";
         }
