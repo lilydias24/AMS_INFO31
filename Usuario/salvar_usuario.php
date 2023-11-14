@@ -24,10 +24,9 @@ switch($_REQUEST["acao"]){
         $nivel = $_POST["nivel"];
         $CPF = $_POST["CPF"];
         $email = $_POST["email"];
-        $senha = $_POST["senha"];   
 
         $sql = "UPDATE usuario 
-        SET nivel='$nivel', email='$email', senha='$senha' 
+        SET nivel='$nivel', email='$email' 
         WHERE CPF='$CPF'";
 
         $result = $connect->query($sql);

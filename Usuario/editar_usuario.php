@@ -28,9 +28,6 @@
             <label for="email" class="h5 m-2">Email :</label>
             <input type="text" class="form-control text-center" style="margin-left: 10%; width: 80%;" 
             name="email" value="<?php print $row->email; ?>">
-            <label for="senha" class="h5 m-2">Senha :</label>
-            <input type="password" class="form-control text-center" style="margin-left: 10%; width: 80%;" 
-            placeholder="Informe a nova senha" name="senha" required>
         </div>
         <button type="submit" class="btn btn-info btn-lg text-center mt-3">Editar</button>
     </form>

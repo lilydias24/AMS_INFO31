@@ -3,7 +3,6 @@
 
 Pendentes :
 
-// Arrumar o cronograma (não está editando)
 // Usuário não está editando
-// Relatório não exibe a logo
-// Ajustar fluxo de acessos autorizados
+// Criptografar senha de usuário
+// Fazer o recuperar senha do usuário

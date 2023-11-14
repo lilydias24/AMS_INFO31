@@ -65,7 +65,29 @@ include_once("../Login/autenticar.php");
                             //$hora = date("H:i:s"); 
                             $hora = '08:00:00'; //puxando a hora 2 vezes ?
                             if($rowTeste->dia_semana == $dia){
-
+                                
+                                $autorizados = "SELECT * FROM historico AS hist INNER JOIN aluno AS al ON hist.matricula = al.matricula
+                                INNER JOIN turma AS tur ON tur.ID_turma = al.ID_turma
+                                INNER JOIN informa AS inf ON hist.ID_historico = inf.ID_historico  
+                                INNER JOIN status AS stts ON inf.ID_status = stts.ID_status
+                                WHERE al.matricula = $comanda AND hist.ID_historico = (SELECT MAX(ID_historico)
+                                FROM historico WHERE matricula = $comanda)";
+                                $resultAutorizados = $connect->query($autorizados);
+                                $qtLinhasAutorizados = $resultAutorizados->num_rows;
+                                if(($qtLinhasAutorizados > 0)){
+                                    while($rowAut = $resultAutorizados->fetch_object()) { //var_dump($rowAut);
+                                        if ($rowAut->ID_status == '12')
+                                        {
+                                            $rowCon->ID_status = 12;    
+                                            $rowCon->descricao = "Entrada Autorizada"; 
+                                        }
+                                        elseif($rowAut->ID_status == '10')
+                                        {
+                                            $rowCon->ID_status = 10;    
+                                            $rowCon->descricao = "Saída Autorizada"; 
+                                        }
+                                    }
+                                } else
                                 if (($rowTeste->hr_entrada == '08:00:00') && ($hora >= '07:00:00' && $hora <= '08:15:00') 
                                 or ($rowTeste->hr_entrada == '13:30:00') && ($hora >= '12:30:00' && $hora <= '13:45:00'))
                                 {                                   
@@ -92,35 +114,7 @@ include_once("../Login/autenticar.php");
                                         print "<script class='alert alert-danger'> alert('Saída de Aluno NÃO autorizada!'); </script>";
                                         print "<script> location.href='index.php'; </script>";                                        
                                     }        
-                                }
-                                
-                                $autorizados = "SELECT * FROM historico AS hist INNER JOIN aluno AS al ON hist.matricula = al.matricula
-                                INNER JOIN turma AS tur ON tur.ID_turma = al.ID_turma
-                                INNER JOIN informa AS inf ON hist.ID_historico = inf.ID_historico  
-                                INNER JOIN status AS stts ON inf.ID_status = stts.ID_status
-                                WHERE al.matricula = $comanda AND hist.ID_historico = (SELECT MAX(ID_historico)
-                                FROM historico WHERE matricula = $comanda)";
-                                $resultAutorizados = $connect->query($autorizados);
-                                $qtLinhasAutorizados = $resultAutorizados->num_rows;
-                                if(($qtLinhasAutorizados > 0)){
-                                    while($rowAut = $resultAutorizados->fetch_object()) { //var_dump($rowAut);
-                                        if ( (($rowTeste->hr_entrada == '08:00:00') && !($hora >= '07:00:00' && $hora <= '10:00:00') 
-                                        or ($rowTeste->hr_entrada == '13:30:00') && !($hora >= '12:30:00' && $hora <= '15:30:00')) 
-                                        && ($rowAut->ID_status == '12') )
-                                        {
-                                            $rowCon->ID_status = 12;    
-                                            $rowCon->descricao = "Entrada Autorizada"; 
-                                        }
-                                        elseif( (($rowTeste->hr_saida == '11:35:00' && !($hora >= '11:20:00')) 
-                                        or ($rowTeste->hr_saida == '12:25:00' && !($hora >= '12:00:00'))
-                                        or ($rowTeste->hr_saida == '17:10:00' && !($hora >= '17:00:00'))) 
-                                        && ($rowAut->ID_status == '10') )
-                                        {
-                                            $rowCon->ID_status = 10;    
-                                            $rowCon->descricao = "Saída Autorizada"; 
-                                        }
-                                    }
-                                }          
+                                }         
                             }
                         }
                     }
