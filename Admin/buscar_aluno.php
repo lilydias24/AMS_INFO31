@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Autorizar Saída</title>
 </head>
@@ -25,7 +27,7 @@
     <hr class="w-50 mx-auto text-success p-2">
     <form method="GET" class="form-inline">
         <div class="input-group mt-3 mx-auto shadow" style="width: 35%;">
-            <input class="form-control text-center" name="filtro" type="search" aria-label="Search" placeholder="Busque pela Matrícula de um Aluno">
+            <input class="form-control text-center" name="filtro" type="search" aria-label="Search" id="matricula" placeholder="Busque pela Matrícula de um Aluno">
             <div class="input-group-append">
                 <button class="btn btn-success" name="buscar" type="submit">
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="35" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -36,6 +38,13 @@
         </div>
     </form>
 </BODY>
+<script>
+    $(document).ready(function () {
+        $('#matricula').inputmask({
+            mask: '9999999999' 
+        });
+    });
+</script>
 <?php
 if (isset($_GET['filtro']) && !empty($_GET['filtro'])) {
     include_once("autorizar_aluno.php");
