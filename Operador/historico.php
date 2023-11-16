@@ -36,7 +36,6 @@ include_once("../Login/autenticar.php");
 			INNER JOIN turma AS tur ON al.ID_turma = tur.ID_turma ORDER BY hist.ID_historico DESC"; 
             $resultConsulta = $connect->query($consulta);
             $qtLinhasConsulta = $resultConsulta->num_rows; 
-			
 			if($qtLinhasConsulta > 0){
 				print "<div class='rounded table-responsive text-center m-3'>";
 				print "<table class='table table-info table-hover shadow'>";

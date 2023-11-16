@@ -49,4 +49,26 @@
 if (isset($_GET['filtro']) && !empty($_GET['filtro'])) {
     include_once("autorizar_aluno.php");
 }
+
+/*
+if(gettype($busca) == 'integer'){
+
+    $consulta = "SELECT * FROM historico AS hist INNER JOIN aluno AS al ON hist.matricula = al.matricula
+    INNER JOIN turma AS tur ON tur.ID_turma = al.ID_turma 
+    INNER JOIN informa AS inf ON hist.ID_historico = inf.ID_historico  
+    INNER JOIN status AS stts ON inf.ID_status = stts.ID_status
+    WHERE al.matricula = $busca AND hist.ID_historico = (SELECT MAX(ID_historico) 
+    FROM historico WHERE matricula = $busca)";
+    $resultConsulta = $connect->query($consulta);
+    $qtLinhasConsulta = $resultConsulta->num_rows;
+} else {
+    $consultaMat = "SELECT matricula FROM aluno WHERE nome LIKE '%$busca%";
+    $resultConsulta = $connect->query($consultaMat);
+    $qtLinhasConsulta = $resultConsulta->num_rows;
+
+    if($qtLinhasConsulta > 0){
+        $linha = $resultConsulta->fetch_object();
+        $matricula = $linha->matricula;
+    }
+}*/
 ?>

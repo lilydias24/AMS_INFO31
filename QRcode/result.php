@@ -33,6 +33,7 @@ include_once("../Login/autenticar.php");
     $comanda = $_GET['comanda'];
     date_default_timezone_set('America/Sao_Paulo');
     $dt_hrAtual = date('Y-m-d H:i:s');
+    $status_Atual = 0;
 
     $verif = "SELECT * FROM aluno AS al INNER JOIN turma AS tur ON al.ID_turma = tur.ID_turma
     WHERE matricula=". $comanda;
@@ -59,11 +60,11 @@ include_once("../Login/autenticar.php");
                     if($qtLinhasTeste > 0) {
                         while($rowTeste = $resultTeste->fetch_object()){ //var_dump($rowTeste); //Lista todo o cronograma para essa turma
                             
-                            //$dia = date('D');
-                            $dia = 'Mon';
+                            $dia = date('D');
+                            //$dia = 'Mon';
                             date_default_timezone_set('America/Sao_Paulo');
-                            //$hora = date("H:i:s"); 
-                            $hora = '08:00:00'; //puxando a hora 2 vezes ?
+                            $hora = date("H:i:s"); 
+                            //$hora = '08:00:00'; 
                             if($rowTeste->dia_semana == $dia){
                                 
                                 $autorizados = "SELECT * FROM historico AS hist INNER JOIN aluno AS al ON hist.matricula = al.matricula
@@ -78,12 +79,12 @@ include_once("../Login/autenticar.php");
                                     while($rowAut = $resultAutorizados->fetch_object()) { //var_dump($rowAut);
                                         if ($rowAut->ID_status == '12')
                                         {
-                                            $rowCon->ID_status = 12;    
+                                            $status_Atual = 12;
                                             $rowCon->descricao = "Entrada Autorizada"; 
                                         }
                                         elseif($rowAut->ID_status == '10')
                                         {
-                                            $rowCon->ID_status = 10;    
+                                            $status_Atual = 10;    
                                             $rowCon->descricao = "Saída Autorizada"; 
                                         }
                                     }
@@ -91,13 +92,13 @@ include_once("../Login/autenticar.php");
                                 if (($rowTeste->hr_entrada == '08:00:00') && ($hora >= '07:00:00' && $hora <= '08:15:00') 
                                 or ($rowTeste->hr_entrada == '13:30:00') && ($hora >= '12:30:00' && $hora <= '13:45:00'))
                                 {                                   
-                                    $rowCon->ID_status = 6;
+                                    $status_Atual = 6;
                                     $rowCon->descricao = "Presente";                                    
                                 } 
                                 elseif(($rowTeste->hr_entrada == '08:00:00') && ($hora >= '08:15:00' && $hora <= '10:00:00')
                                 or ($rowTeste->hr_entrada == '13:30:00') && ($hora >= '13:45:00' && $hora <= '15:30:00'))
                                 {                                    
-                                    $rowCon->ID_status = 4;
+                                    $status_Atual  = 4;
                                     $rowCon->descricao = "Entrada em Atraso";                                    
                                 } 
                                 else 
@@ -106,7 +107,7 @@ include_once("../Login/autenticar.php");
                                     or ($rowTeste->hr_saida == '12:25:00' && $hora >= '12:00:00')
                                     or ($rowTeste->hr_saida == '17:10:00' && $hora >= '17:00:00'))
                                     {
-                                        $rowCon->ID_status = 8;
+                                        $status_Atual  = 8;
                                         $rowCon->descricao = "Ausente";
                                     } 
                                     else
@@ -180,7 +181,7 @@ include_once("../Login/autenticar.php");
                                 $rowR2 = $result2->fetch_object();
 
                                 $ID_historico = $rowR2->ID_historico;
-                                $ID_status = $rowCon->ID_status;
+                                $ID_status = $status_Atual;
                                 $sql3 = "INSERT INTO informa (ID_historico, ID_status) VALUES ('{$ID_historico}', '{$ID_status}')";
                                 $result3 = $connect->query($sql3);
                             } else {
