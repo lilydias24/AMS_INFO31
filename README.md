@@ -6,3 +6,7 @@ Pendentes :
 // Usuário não está editando
 // Criptografar senha de usuário
 // Fazer o recuperar senha do usuário
+// Justificar o uso da tabela Informa
+// Ajustar os Selects de turma e cronograma
+// Explicar o caso de uso gerar relatório
+// Escrever projetos futuros

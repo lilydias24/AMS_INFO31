@@ -32,11 +32,19 @@
         <div class="m-3">
             <label for="turma" class="h4">Turma</label>
             <select class="form-select text-center w-75 mx-auto" name="ID_turma">
+                <?php
+                $sql = "SELECT * FROM aluno as al INNER JOIN turma as tur WHERE al.ID_turma = tur.ID_turma AND al.matricula=" . $_REQUEST["matricula"];
+                $result = $connect->query($sql);
+                while ($row = $result->fetch_object()) {
+                    print "<option value='" . $row->ID_turma . "'>" . $row->nome_turma;
+                    print "</option>";
+                }
+                ?>
                 <?php 
                     $sql = "SELECT * FROM turma";
                     $result = $connect->query($sql);
                     while($row = $result->fetch_object()){
-                        print "<option value='". $row->ID_turma ."'>" . $row->nome_turma;
+                        print "<option value='". $row->ID_turma ."'>".$row->nome_turma;
                         print "</option>";
                     }
                 ?>

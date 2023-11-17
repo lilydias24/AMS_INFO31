@@ -1,7 +1,4 @@
-@import url('https://fonts.googleapis.com/css2? família=Labrada&display=swap');
-
 .card-container {
-    font-family: 'Labrada', serif;
     min-height: 100vh;
     background: linear-gradient(to right, #03f2ffb6, #1eb211dc);
     display: flex;
@@ -62,7 +59,6 @@
 }
 .card-form .form-item::placeholder {
     color:dimgray;
-    font-family: 'Labrada', serif;
 }
 .card-form {
     display: flex;

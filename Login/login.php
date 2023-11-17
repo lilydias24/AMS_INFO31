@@ -19,10 +19,6 @@
                 <div>Realize seu login para acessar</div> 
             </div>
             <form class="card-form" action="testLogin.php" method="POST">
-                <div class="form-radio"> 
-                    <label><input type="radio" class="form-check-input" name="nivel" value="admin">Admin</label><br>
-                    <br><label><input type="radio" class="form-check-input" name="nivel" value="operador">Operador</label>
-                </div>  
                 <div class="form-item"> 
                     CPF : <input type="text" name="CPF" id="CPF" placeholder="Digite seu CPF" required>
                 </div>

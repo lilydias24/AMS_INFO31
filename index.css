@@ -1,18 +1,14 @@
 /*CSS Document*/
 @import url('https://fonts.googleapis.com/css2?family=Labrada&display=swap');
 
-*{ /* define todos os elementos */
-    margin: 0;  
-    padding: 0;  
-    box-sizing: border-box; 
-} 
 .container-principal {
     font-family: Georgia, Times, 'Times New Roman', serif; 
-    min-height: 150vh;
+    min-height: 100vh;
     background: linear-gradient(to right, #03f2ffb6, #1eb211dc);
-    background-size: auto;
+    background-size: cover;
     background-repeat: no-repeat;
-    background-attachment: scroll;
+    align-items: center;
+    justify-content: center;
 }
 header {        /* define propriedades do topo */
     width: 100%; 
@@ -157,8 +153,7 @@ footer .footer-text {
     float: left; 
 }
 footer .footer-text a {
-    text-decoration: none;
     text-shadow: #fff;
     font-weight: bolder;
-    color :forestgreen;
+    color :rgb(0, 0, 0);
 }

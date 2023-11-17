@@ -60,11 +60,11 @@ include_once("../Login/autenticar.php");
                     if($qtLinhasTeste > 0) {
                         while($rowTeste = $resultTeste->fetch_object()){ //var_dump($rowTeste); //Lista todo o cronograma para essa turma
                             
-                            $dia = date('D');
-                            //$dia = 'Mon';
+                            //$dia = date('D');
+                            $dia = 'Mon';
                             date_default_timezone_set('America/Sao_Paulo');
-                            $hora = date("H:i:s"); 
-                            //$hora = '08:00:00'; 
+                            //$hora = date("H:i:s"); 
+                            $hora = '08:00:00'; 
                             if($rowTeste->dia_semana == $dia){
                                 
                                 $autorizados = "SELECT * FROM historico AS hist INNER JOIN aluno AS al ON hist.matricula = al.matricula
@@ -194,7 +194,9 @@ include_once("../Login/autenticar.php");
             ?>
             <?php endif; ?>
         <?php endwhile; ?>
-    <?php endif; ?>        
+    <?php else : print "<script> alert('Matrícula de Aluno Não Reconhecida pelo Sistema!'); </script>";
+                 print "<script> location.href='index.php'; </script>";
+     endif; ?>        
   </div>
 </BODY>
 </html>
