@@ -28,7 +28,7 @@
     <form method="GET" class="form-inline" action="">
     <div class="row justify-content-center mx-auto">
         <div class="col-md-5">                
-            <div class="row w-75 text-light"><h6>Data Inicial  >>  Data Final</h6></div>
+            <div class="row w-75 text-dark"><h6>Data Inicial  >>  Data Final</h6></div>
             <div class="input-group mt-3 shadow w-75">
                 <input class="form-control text-center p-2" name="data_inicio" type="date">        
                 <input class="form-control text-center p-2" name="data_final" type="date">
@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="col-md-4">
-        <div class="row w-75 text-light"><h6>Matrícula</h6></div>
+        <div class="row w-75 text-dark"><h6>Matrícula</h6></div>
             <div class="input-group mt-3 shadow w-75">
                 <input class="form-control text-center" name="filtro" type="search" aria-label="Search"  id="matricula" placeholder="xxxxxxxxxx" >
                 <div class="input-group-append">
