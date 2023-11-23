@@ -90,13 +90,15 @@ include_once("../Login/autenticar.php");
                                     }
                                 } else
                                 if (($rowTeste->hr_entrada == '08:00:00') && ($hora >= '07:00:00' && $hora <= '08:15:00') 
-                                or ($rowTeste->hr_entrada == '13:30:00') && ($hora >= '12:30:00' && $hora <= '13:45:00'))
+                                or ($rowTeste->hr_entrada == '13:30:00') && ($hora >= '12:30:00' && $hora <= '13:45:00') 
+                                or ($rowTeste->hr_entrada == '19:00:00') && ($hora >= '18:00:00' && $hora <= '19:15:00'))
                                 {                                   
                                     $status_Atual = 6;
                                     $rowCon->descricao = "Presente";                                    
                                 } 
                                 elseif(($rowTeste->hr_entrada == '08:00:00') && ($hora >= '08:15:00' && $hora <= '10:00:00')
-                                or ($rowTeste->hr_entrada == '13:30:00') && ($hora >= '13:45:00' && $hora <= '15:30:00'))
+                                or ($rowTeste->hr_entrada == '13:30:00') && ($hora >= '13:45:00' && $hora <= '15:35:00')
+                                or ($rowTeste->hr_entrada == '19:00:00') && ($hora >= '19:15:00' && $hora <= '20:55:00'))
                                 {                                    
                                     $status_Atual  = 4;
                                     $rowCon->descricao = "Entrada em Atraso";                                    
@@ -104,8 +106,9 @@ include_once("../Login/autenticar.php");
                                 else 
                                 {
                                     if(($rowTeste->hr_saida == '11:35:00' && $hora >= '11:20:00') 
-                                    or ($rowTeste->hr_saida == '12:25:00' && $hora >= '12:00:00')
-                                    or ($rowTeste->hr_saida == '17:10:00' && $hora >= '17:00:00'))
+                                    or ($rowTeste->hr_saida == '12:25:00' && $hora >= '12:10:00')
+                                    or ($rowTeste->hr_saida == '17:10:00' && $hora >= '17:00:00')
+                                    or ($rowTeste->hr_saida == '22:30:00' && $hora >= '22:15:00'))
                                     {
                                         $status_Atual  = 8;
                                         $rowCon->descricao = "Ausente";

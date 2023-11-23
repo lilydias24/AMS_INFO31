@@ -19,7 +19,10 @@ include_once("../Login/autenticar.php");
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16"><path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
             </svg></a></button></li>
             <li class="nav-item mt-5"><a href="../QRcode/index.php" class="text-decoration-none btn btn-outline-success">Escaner</a></li>
-            <form method="GET" action="" class="form-inline">
+            <li class="nav-item mt-5"><button type="button" class="btn btn-outline-success"><a href="historico.php" class="text-decoration-none text-black" aria-current="page">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16"><path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+			</svg></a></button></li>
+			<form method="GET" action="" class="form-inline">
 				<div class="input-group mt-5 mx-auto">
 					<input class="form-control text-center" name="filtro" type="search" aria-label="Search" placeholder="Nome do Aluno">
 					<div class="input-group-append">
