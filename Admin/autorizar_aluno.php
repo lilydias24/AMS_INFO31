@@ -4,15 +4,38 @@ include_once("../Login/autenticar.php");
 include("../config.php");
 
 $busca = $_GET['filtro'];
-$consulta = "SELECT * FROM historico AS hist INNER JOIN aluno AS al ON hist.matricula = al.matricula
-INNER JOIN turma AS tur ON tur.ID_turma = al.ID_turma 
-INNER JOIN informa AS inf ON hist.ID_historico = inf.ID_historico  
-INNER JOIN status AS stts ON inf.ID_status = stts.ID_status
-WHERE al.matricula = $busca AND hist.ID_historico = (SELECT MAX(ID_historico) 
-FROM historico WHERE matricula = $busca)";
-$resultConsulta = $connect->query($consulta);
-$qtLinhasConsulta = $resultConsulta->num_rows;
 
+if(is_numeric($busca)){
+
+    $consulta = "SELECT * FROM historico AS hist INNER JOIN aluno AS al ON hist.matricula = al.matricula
+    INNER JOIN turma AS tur ON tur.ID_turma = al.ID_turma 
+    INNER JOIN informa AS inf ON hist.ID_historico = inf.ID_historico  
+    INNER JOIN status AS stts ON inf.ID_status = stts.ID_status
+    WHERE al.matricula = $busca AND hist.ID_historico = (SELECT MAX(ID_historico) 
+    FROM historico WHERE matricula = $busca)";
+    $resultConsulta = $connect->query($consulta);
+    $qtLinhasConsulta = $resultConsulta->num_rows;
+    
+} else {
+    
+    $consultaMat = "SELECT * FROM aluno WHERE nome LIKE '%$busca%'";
+    $resultMat = $connect->query($consultaMat);
+    $qtLinhasMat = $resultMat->num_rows;    
+
+    if($qtLinhasMat > 0){
+        $linha = $resultMat->fetch_object();
+        $matricula = $linha->matricula;
+        
+        $consulta = "SELECT * FROM historico AS hist INNER JOIN aluno AS al ON hist.matricula = al.matricula
+        INNER JOIN turma AS tur ON tur.ID_turma = al.ID_turma 
+        INNER JOIN informa AS inf ON hist.ID_historico = inf.ID_historico  
+        INNER JOIN status AS stts ON inf.ID_status = stts.ID_status
+        WHERE al.matricula = $matricula AND hist.ID_historico = (SELECT MAX(ID_historico) 
+        FROM historico WHERE matricula = $matricula)";
+        $resultConsulta = $connect->query($consulta);
+        $qtLinhasConsulta = $resultConsulta->num_rows;
+    }
+}
 if ($qtLinhasConsulta > 0) {
     print "<div class='rounded table-responsive text-center m-5'>";
     print "<table class='table table-light table-hover shadow'>";
@@ -45,6 +68,7 @@ if ($qtLinhasConsulta > 0) {
 } else {
     print "<p class='alert alert-danger text-center m-3 w-50 mx-auto'>Não Foraram Encontrados Resultados!</p>";
 }
+
 ?>
 <div class="modal-fullscreen-md-down">
     <div class="modal fade text-center mx-auto" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">

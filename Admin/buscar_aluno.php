@@ -27,7 +27,7 @@
     <hr class="w-50 mx-auto text-success p-2">
     <form method="GET" class="form-inline">
         <div class="input-group mt-3 mx-auto shadow" style="width: 35%;">
-            <input class="form-control text-center" name="filtro" type="search" aria-label="Search" id="matricula" placeholder="Busque pela Matrícula de um Aluno">
+            <input class="form-control text-center" name="filtro" type="search" aria-label="Search" id="matricula" placeholder="Busque por Matrícula || Nome de um Aluno">
             <div class="input-group-append">
                 <button class="btn btn-success" name="buscar" type="submit">
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="35" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -38,37 +38,15 @@
         </div>
     </form>
 </BODY>
-<script>
+<!--<script>
     $(document).ready(function () {
         $('#matricula').inputmask({
             mask: '9999999999' 
         });
     });
-</script>
+</script>-->
 <?php
 if (isset($_GET['filtro']) && !empty($_GET['filtro'])) {
     include_once("autorizar_aluno.php");
 }
-
-/*
-if(gettype($busca) == 'integer'){
-
-    $consulta = "SELECT * FROM historico AS hist INNER JOIN aluno AS al ON hist.matricula = al.matricula
-    INNER JOIN turma AS tur ON tur.ID_turma = al.ID_turma 
-    INNER JOIN informa AS inf ON hist.ID_historico = inf.ID_historico  
-    INNER JOIN status AS stts ON inf.ID_status = stts.ID_status
-    WHERE al.matricula = $busca AND hist.ID_historico = (SELECT MAX(ID_historico) 
-    FROM historico WHERE matricula = $busca)";
-    $resultConsulta = $connect->query($consulta);
-    $qtLinhasConsulta = $resultConsulta->num_rows;
-} else {
-    $consultaMat = "SELECT matricula FROM aluno WHERE nome LIKE '%$busca%";
-    $resultConsulta = $connect->query($consultaMat);
-    $qtLinhasConsulta = $resultConsulta->num_rows;
-
-    if($qtLinhasConsulta > 0){
-        $linha = $resultConsulta->fetch_object();
-        $matricula = $linha->matricula;
-    }
-}*/
 ?>
