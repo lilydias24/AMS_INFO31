@@ -1,4 +1,4 @@
-<?php include_once("../Login/autenticar.php"); ?>
+<?php //include_once("../Login/autenticar.php"); ?>
 <?php
 switch($_REQUEST["acao"]){
     case 'cadastrar':
@@ -6,10 +6,11 @@ switch($_REQUEST["acao"]){
         $CPF = $_POST["CPF"];
         $email = $_POST["email"];
         $senha = $_POST["senha"];
+        $senhaCriptografada = password_hash($senha, PASSWORD_BCRYPT);
         $CPF = str_replace(['.', '-'], '', $CPF);
 
         $sql = "INSERT INTO usuario (nivel, CPF, email, senha) 
-        VALUES ('{$nivel}', '{$CPF}', '{$email}', '{$senha}')";
+        VALUES ('{$nivel}', '{$CPF}', '{$email}', '{$senhaCriptografada}')";
         $result = $connect->query($sql) or die($connect->error);
 
         if($result == true){

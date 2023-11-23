@@ -25,6 +25,9 @@
                 <div class="form-item">
                     Senha : <input type="password" name="senha" placeholder="Digite sua Senha" required>
                 </div>
+                <div class="form-item">
+                    <a href="recuperar_senha.php" style="color:darkred;" >Esqueceu sua Senha ? </a>
+                </div>
                 <button class="action_btn" type="submit" name="submit">Entrar</button>
             </form>
         </div>
