@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 08-Nov-2023 às 21:37
+-- Tempo de geração: 24-Nov-2023 às 05:51
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -44,9 +44,6 @@ CREATE TABLE IF NOT EXISTS `aluno` (
 --
 
 INSERT INTO `aluno` (`matricula`, `nome`, `email`, `num_responsavel`, `foto`, `ID_turma`) VALUES
-('2019321631', 'Claudia Kussuma Flores Lesama', 'claudia.2019321631@aluno.iffar.edu.br', '(55) 9-8448-1000', '2023.10.30-16.48.png', 8),
-('2020316278', 'João Rodrigues', 'mikael.2021317171@aluno.iffar.edu.br', '(55) 9-9233-8659', '2023.10.29-04.33.png', 14),
-('2021319309', 'Bianca Fernandes Ramos', 'lulubfr7@gmail.com', '(55) 9-8423-8887', '2023.10.30-19.20.png', 11),
 ('2021319363', 'Emilly Nascimento Dias', 'emilly.2021319363@aluno.iffar.edu.br', '(55) 9-9233-6928', '2023.10.16-18.55.jpg', 11);
 
 -- --------------------------------------------------------
@@ -96,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `historico` (
   `motivo` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`ID_historico`),
   KEY `matricula` (`matricula`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `historico`
@@ -111,10 +108,9 @@ INSERT INTO `historico` (`ID_historico`, `data_hr`, `matricula`, `motivo`) VALUE
 (47, '2023-10-13 21:53:42', '2021319363', NULL),
 (48, '2023-10-13 22:37:11', '2021319363', NULL),
 (49, '2023-10-13 22:43:09', '2021319363', NULL),
-(50, '2023-10-16 16:19:10', '2020316278', NULL),
 (61, '2023-10-28 18:41:32', '2021319363', 'Projeto'),
 (62, '2023-10-28 18:40:35', '2021319363', 'Aula Cancelada'),
-(63, '2023-11-07 14:44:53', '2021319363', NULL);
+(99, '2023-11-16 21:12:36', '2021319363', NULL);
 
 -- --------------------------------------------------------
 
@@ -143,9 +139,9 @@ INSERT INTO `informa` (`ID_historico`, `ID_status`) VALUES
 (47, 8),
 (48, 6),
 (49, 6),
-(50, 8),
 (61, 12),
-(62, 10);
+(62, 10),
+(99, 10);
 
 -- --------------------------------------------------------
 
@@ -204,7 +200,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `nivel` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `CPF` char(14) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `email` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `senha` varchar(8) COLLATE utf8mb4_general_ci NOT NULL,
+  `senha` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`CPF`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -213,8 +209,8 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 --
 
 INSERT INTO `usuario` (`nivel`, `CPF`, `email`, `senha`) VALUES
-('operador', '03739838086', 'rubianascimento0509@gmail.com', '050505'),
-('admin', '06410040016', 'emillydias2408@gmail.com', '1224');
+('operador', '03739838086', 'rubianascimento0509@gmail.com', '$2y$10$KuoeNLCUesd8OrwYJlITb.3lImlRxI0WZ/.NoRbybiQKVeNr8IGDy'),
+('admin', '06410040016', 'emilly.2021319363@aluno.iffar.edu.br', '$2y$10$AWu04zUtKgHUdfs3BvrIOe7btNGnk5CFJKH5Z2Qtgq4fR/3zQg1F.');
 
 --
 -- Restrições para despejos de tabelas
