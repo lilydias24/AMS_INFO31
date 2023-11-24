@@ -16,7 +16,6 @@
             print "<th> Nome </td>";             
             print "<th> Email </td>";             
             print "<th> Responsável </td>";    
-            //print "<th> Foto </td>";                      
             print "<th> Turma </th>";
             print "<th colspan='2'> Ações </th>";
             print "</tr>"; 
@@ -26,7 +25,6 @@
             print "<td>" . $row->nome . "</td>"; 
             print "<td>" . $row->email . "</td>"; 
             print "<td>" . $row->num_responsavel . "</td>"; 
-            //print "<td>" . $row->foto . "</td>"; 
             print "<td>" . $row->nome_turma . "</td>";
             print "<td> 
                     <button onclick=\"location.href='?page=editar&matricula=".$row->matricula. "';\" class='btn btn-success'>Editar</button> </td>";

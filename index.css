@@ -4,8 +4,7 @@
 .container-principal {
     font-family: Georgia, Times, 'Times New Roman', serif; 
     min-height: 100vh;
-    background: linear-gradient(to right, #03f2ffb6, #1eb211dc);
-    background-size: cover;
+    background: linear-gradient(to left top, #065917, #0c6d25, #108233, #129743, #10ad53, #00b56d, #00bc84, #00c39a, #00bbb1, #00b0c2, #00a4cb, #0097cb);    background-size: cover;
     background-repeat: no-repeat;
     align-items: center;
     justify-content: center;

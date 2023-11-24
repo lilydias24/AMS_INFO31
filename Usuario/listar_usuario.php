@@ -14,7 +14,6 @@
             print "<th> Nível </td>";             
             print "<th> CPF </td>";             
             print "<th> Email </th>";
-            print "<th> Senha </th>";
             print "<th> Ações </th>";
             print "</tr>"; 
             while($row = $result->fetch_object()){
@@ -22,7 +21,6 @@
                 print "<td>" . $row->nivel . "</td>";             
                 print "<td>" . $row->CPF . "</td>";             
                 print "<td>" . $row->email . "</td>";
-                print "<td>" . $row->senha . "</td>";
                 print "<td> 
                         <button onclick=\"location.href='?page=editar&CPF=".$row->CPF. "';\" class='btn btn-success'>Editar</button>
                         <button onclick=\"if(confirm('Tem Certeza de que Deseja Excluir este Usuário?'))
@@ -38,4 +36,3 @@
         }
     ?>
 </div>
-<!-- não está editando -->

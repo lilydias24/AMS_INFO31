@@ -36,7 +36,7 @@
                 $sql = "SELECT * FROM aluno as al INNER JOIN turma as tur WHERE al.ID_turma = tur.ID_turma AND al.matricula=" . $_REQUEST["matricula"];
                 $result = $connect->query($sql);
                 while ($row = $result->fetch_object()) {
-                    print "<option value='" . $row->ID_turma . "'>" . $row->nome_turma;
+                     print "<option value='" . $row->ID_turma . "'>" . $row->nome_turma;
                     print "</option>";
                 }
                 ?>

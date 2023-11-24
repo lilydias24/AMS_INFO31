@@ -1,4 +1,4 @@
-<?php //include_once("../Login/autenticar.php"); ?>
+<?php include_once("../Login/autenticar.php"); ?>
 <?php
 switch($_REQUEST["acao"]){
     case 'cadastrar':
@@ -24,15 +24,13 @@ switch($_REQUEST["acao"]){
     case 'editar':
         $nivel = $_POST["nivel"];
         $CPF = $_POST["CPF"];
+        $CPF = str_replace(['.', '-'], '', $CPF);
         $email = $_POST["email"];
 
         $sql = "UPDATE usuario 
         SET nivel='$nivel', email='$email' 
         WHERE CPF='$CPF'";
-
         $result = $connect->query($sql);
-        var_dump($sql) ;
-        var_dump($result);
 
         if($result == true){
             print "<script> alert('Edição de Usuário Realizada com Sucesso!'); </script>";

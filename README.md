@@ -3,7 +3,5 @@
 
 Pendentes :
 
-// Usuário não está editando
-// Criptografar senha de usuário não deu certo
-// Ajustar os Selects na edição
+// Ajustar os Selects na edição de Cronograma e Aluno
 // Integrar Bootstrap local em todas as páginas

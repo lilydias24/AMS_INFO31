@@ -12,7 +12,7 @@ switch($_REQUEST["acao"]){
         if(isset($_FILES['foto']))
         {
             $tipo = strtolower(substr($_FILES['foto']['name'], -3)); //Pegando extensão do arquivo
-            $new_name = date("Y.m.d-H.i") . $tipo; //Definindo um novo nome para o arquivo
+            $new_name = date("Y.m.d-H.i") . "." . $tipo; //Definindo um novo nome para o arquivo
             $dir = './fotos/'; //Diretório para uploads
     
             move_uploaded_file($_FILES['foto']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo

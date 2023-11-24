@@ -6,7 +6,6 @@
     $result = $connect->query($sql);
     $row = $result->fetch_object();
 
-
     $data = $row->dia_semana;
     $semana = array(
         'Sun' => 'Domingo',
@@ -18,8 +17,6 @@
         'Sat' => 'Sábado'
     );
     $dia_semana = $semana["$data"]; ?>
-
-
 
     <form action="?page=salvar" method="POST">
         <p class="p-2 h4 rounded shadow">Editar Cronograma</p>
@@ -37,8 +34,6 @@
                 </div>
             </div>
         </div>
-
-
         <hr>
         <div class="m-5">
             <label for="turma" class="h4">Turma :</label>
@@ -50,6 +45,14 @@
                     print "<option value='" . $row->ID_turma . "'>" . $row->nome_turma;
                     print "</option>";
                 }
+                ?>
+                 <?php 
+                    $sql = "SELECT * FROM turma";
+                    $result = $connect->query($sql);
+                    while($row = $result->fetch_object()){
+                        print "<option value='". $row->ID_turma ."'>".$row->nome_turma;
+                        print "</option>";
+                    }
                 ?>
             </select>
         </div>
