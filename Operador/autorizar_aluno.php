@@ -1,5 +1,5 @@
 <?php
-
+include_once("../Login/autenticar.php");
 include("../config.php");
 
 $busca = $_GET['filtro'];

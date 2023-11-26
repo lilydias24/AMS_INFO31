@@ -28,12 +28,10 @@ switch ($_REQUEST["acao"]) {
         $saida = $_POST['hr_saida'];
         $ID_turma = $_POST["ID_turma"];
 
-
         $sql = "UPDATE cronograma 
             SET dia_semana='$dia_semana', hr_entrada='$entrada', hr_saida='$saida', ID_turma='$ID_turma' 
             WHERE ID_cronos='$ID_cronos'";
         $result = $connect->query($sql) or die($connect->error);
-
 
         if ($result == true) {
             print "<script> alert('Edição Realizada com Sucesso!'); </script>";

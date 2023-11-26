@@ -1,4 +1,5 @@
 <?php
+include_once("../Login/autenticar.php");
 include("../config.php");
 require './dompdf/vendor/autoload.php'; // Composer que carrega o DOM 
 
@@ -148,7 +149,6 @@ if (isset($_GET['filtro']) && !empty($_GET['filtro'])) {
         $dados .= "</table>";
     }
 } 
-
 
 $dados .= "<br>";
 $dados .= "</body>"; 

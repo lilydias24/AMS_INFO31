@@ -29,11 +29,14 @@
                 }
             } else {
                 print "<script> alert('Senha Inválida!'); </script>";
+                print "<script> location.href='./login.php'; </script>";
             }
         } else {
             print "<script> alert('Usuário Não Encontrado!'); </script>";
+            print "<script> location.href='./login.php'; </script>";
         }
     } else {
         print "<script> alert('Dados de Login Incompletos!'); </script>";
+        print "<script> location.href='./login.php'; </script>";
     }
 ?>
