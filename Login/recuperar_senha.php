@@ -85,27 +85,27 @@ background-size:cover; background-repeat: no-repeat; min-height: 100vh;">
     <div class="row justify-content-center">
         <div class="col-md-5">
             <div class="card p-3 mt-3">
-                <div class="text-center">
-                    <button type="button" class="btn btn-outline-success"><a href="login.php" class="text-decoration-none text-black" aria-current="page">
+                <div class="text-center d-flex align-items-center">
+                    <button type="button" class="btn btn-outline-success ms-5 me-3"><a href="login.php" class="text-decoration-none text-black" aria-current="page">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16"><path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
                     </svg></a></button>
-                    <h4 class="mt-2">Recuperar a Senha</h4>
-                    <hr>
+                    <h4 class="mt-2 ms-3">Recuperar a Senha</h4>
                 </div>
+                <hr>
                 <form class="card-form text-center" method="POST" action="<?= $_SERVER['PHP_SELF']; ?>">
                     <div class="form-group m-3">
                         <label class="form-label">CPF:</label>
-                        <input class="form-control mx-auto text-center mt-2" type="text" name="CPF" id="CPF" placeholder="Informe seu CPF" required>
+                        <input class="form-control mx-auto text-center mt-2 w-75" type="text" name="CPF" id="CPF" placeholder="Informe seu CPF" required>
                     </div>
                     <div class="form-group m-3">
                         <label class="form-label">Nome:</label>
-                        <input class="form-control mx-auto text-center mt-2" type="text" name="nome" placeholder="Informe seu Nome" required>
+                        <input class="form-control mx-auto text-center mt-2 w-75" type="text" name="nome" placeholder="Informe seu Nome" required>
                     </div>
                     <div class="form-group m-3">
                         <label class="form-label">Email:</label>
-                        <input class="form-control mx-auto text-center mt-2" type="text" name="email" placeholder="Informe seu Email" required>
+                        <input class="form-control mx-auto text-center mt-2 w-75" type="text" name="email" placeholder="Informe seu Email" required>
                     </div>
-                    <button class="btn text-bg-primary mt-3 p-2 w-25" type="submit" name="recuperar">Enviar</button>
+                    <button class="btn text-bg-success mt-3 p-2 w-25" type="submit" name="recuperar">Enviar</button>
                 </form>
             </div>
         </div>
