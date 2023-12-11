@@ -56,9 +56,9 @@ include("../config.php");
                     while ($rowTeste = $resultTeste->fetch_object()) 
                     { 
                         //$dia = date('D');
-                        $dia = 'Mon';
+                        //$dia = 'Mon';
                         date_default_timezone_set('America/Sao_Paulo');
-                        //$hora = date("H:i:s"); 
+                        $hora = date("H:i:s"); 
                         $hora = '08:00:00';
                         if ($rowTeste->dia_semana == $dia) 
                         {
@@ -96,7 +96,7 @@ include("../config.php");
                                     } else {
                                         if (($rowTeste->hr_saida == '11:35:00' && $hora >= '11:20:00')
                                             or ($rowTeste->hr_saida == '12:25:00' && $hora >= '12:10:00')
-                                            or ($rowTeste->hr_saida == '17:10:00' && $hora >= '17:00:00')
+                                            or ($rowTeste->hr_saida == '17:10:00' && $hora >= '16:55:00')
                                             or ($rowTeste->hr_saida == '22:30:00' && $hora >= '22:15:00')) 
                                         {
                                             $status_Atual  = 8;
@@ -122,7 +122,7 @@ include("../config.php");
                             } else {
                                 if (($rowTeste->hr_saida == '11:35:00' && $hora >= '11:20:00')
                                     or ($rowTeste->hr_saida == '12:25:00' && $hora >= '12:10:00')
-                                    or ($rowTeste->hr_saida == '17:10:00' && $hora >= '17:00:00')
+                                    or ($rowTeste->hr_saida == '17:10:00' && $hora >= '16:55:00')
                                     or ($rowTeste->hr_saida == '22:30:00' && $hora >= '22:15:00')) 
                                 {
                                     $status_Atual  = 8;
@@ -209,7 +209,8 @@ include("../config.php");
                     }
                 }
             }
-        } else { print "<script> alert('Matrícula de Aluno Não Reconhecida pelo Sistema!'); </script>";
+        } else { 
+            print "<script> alert('Matrícula de Aluno Não Reconhecida pelo Sistema!'); </script>";
             print "<script> location.href='index.php'; </script>";
         } ?>
     </div>
