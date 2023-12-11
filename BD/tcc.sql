@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 24-Nov-2023 às 05:51
+-- Tempo de geração: 11-Dez-2023 às 22:37
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -44,7 +44,9 @@ CREATE TABLE IF NOT EXISTS `aluno` (
 --
 
 INSERT INTO `aluno` (`matricula`, `nome`, `email`, `num_responsavel`, `foto`, `ID_turma`) VALUES
-('2021319363', 'Emilly Nascimento Dias', 'emilly.2021319363@aluno.iffar.edu.br', '(55) 9-9233-6928', '2023.10.16-18.55.jpg', 11);
+('2019321631', 'Claudia Kussuma Flores Lesama', '2019321631@aluno.iffar.edu.br', '(55) 9-9844-8100', '2023.12.01-20.15.peg', 11),
+('2021319283', 'Bianca Fernandes Ramos', 'bianca.2021319309@aluno.iffar.edu.br', '(55) 9-9638-3842', '2023.12.01-17.53.jpg', 11),
+('2021319363', 'Emilly Nascimento Dias', 'emilly.2021319363@aluno.iffar.edu.br', '(55) 9-9277-6238', '2023.11.25-01.03.png', 11);
 
 -- --------------------------------------------------------
 
@@ -70,9 +72,9 @@ CREATE TABLE IF NOT EXISTS `cronograma` (
 INSERT INTO `cronograma` (`ID_cronos`, `dia_semana`, `hr_entrada`, `hr_saida`, `ID_turma`) VALUES
 (31, 'Mon', '08:00:00', '12:25:00', 11),
 (32, 'Tue', '08:00:00', '17:10:00', 11),
-(33, 'Wed', '14:39:00', '12:25:00', 11),
-(34, 'Thu', '13:35:00', '16:39:00', 11),
-(35, 'Fri', '08:00:00', '12:25:00', 11),
+(33, 'Wed', '08:00:00', '12:25:00', 11),
+(34, 'Thu', '13:30:00', '17:10:00', 11),
+(35, 'Fri', '08:00:00', '11:35:00', 11),
 (76, 'Mon', '08:00:00', '12:25:00', 8),
 (77, 'Tue', '08:00:00', '17:10:00', 8),
 (78, 'Wed', '08:00:00', '11:35:00', 8),
@@ -93,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `historico` (
   `motivo` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`ID_historico`),
   KEY `matricula` (`matricula`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `historico`
@@ -110,7 +112,12 @@ INSERT INTO `historico` (`ID_historico`, `data_hr`, `matricula`, `motivo`) VALUE
 (49, '2023-10-13 22:43:09', '2021319363', NULL),
 (61, '2023-10-28 18:41:32', '2021319363', 'Projeto'),
 (62, '2023-10-28 18:40:35', '2021319363', 'Aula Cancelada'),
-(99, '2023-11-16 21:12:36', '2021319363', NULL);
+(99, '2023-11-16 21:12:36', '2021319363', NULL),
+(100, '2023-11-24 22:07:02', '2021319363', 'Chovendo'),
+(101, '2023-11-26 04:25:21', '2021319363', NULL),
+(102, '2023-11-29 08:44:58', '2021319363', 'Chovendo'),
+(104, '2023-12-01 17:23:56', '2019321631', NULL),
+(105, '2023-12-01 17:24:45', '2019321631', 'Prof Faltou');
 
 -- --------------------------------------------------------
 
@@ -141,7 +148,12 @@ INSERT INTO `informa` (`ID_historico`, `ID_status`) VALUES
 (49, 6),
 (61, 12),
 (62, 10),
-(99, 10);
+(99, 10),
+(100, 6),
+(101, 6),
+(102, 10),
+(104, 6),
+(105, 12);
 
 -- --------------------------------------------------------
 
@@ -210,6 +222,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 
 INSERT INTO `usuario` (`nivel`, `CPF`, `email`, `senha`) VALUES
 ('operador', '03739838086', 'rubianascimento0509@gmail.com', '$2y$10$KuoeNLCUesd8OrwYJlITb.3lImlRxI0WZ/.NoRbybiQKVeNr8IGDy'),
+('operador', '05851967021', 'bianca.2021319309@aluno.iffar.edu.br', '$2y$10$uyk2nNFe0nin6gSeDD0D5epL5QlVUYVzBKnImUmiCO9cTe633ptQO'),
 ('admin', '06410040016', 'emilly.2021319363@aluno.iffar.edu.br', '$2y$10$AWu04zUtKgHUdfs3BvrIOe7btNGnk5CFJKH5Z2Qtgq4fR/3zQg1F.');
 
 --
