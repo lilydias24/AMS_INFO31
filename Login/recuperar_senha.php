@@ -28,16 +28,16 @@ if (isset($_POST['recuperar'])) {
                 try {
                     $mail = new PHPMailer();
                     $mail->IsSMTP();
-                    $mail->Host = "smtp.gmail.com";
+                    $mail->Host = $settings["smtp"]["host"];
                     $mail->SMTPAuth = true;
-                    $mail->Username = 'acessMonitoringIFFAR@gmail.com';
-                    $mail->Password = '***REMOVIDO***';
+                    $mail->Username = $settings["smtp"]["username"];
+                    $mail->Password = $settings["smtp"]["password"];
                     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-                    $mail->Port = 465;
+                    $mail->Port = $settings["smtp"]["port"];
 
-                    $mail->setFrom('acessMonitoringIFFAR@gmail.com', 'Monitoramento de Acesso - IFFAR UG');
+                    $mail->setFrom($settings["smtp"]["username"], $settings["smtp"]["from_name"]);
                     $mail->addAddress($email, $nome);
-                    $mail->addReplyTo('acessMonitoringIFFAR@gmail.com');
+                    $mail->addReplyTo($settings["smtp"]["username"]);
 
                     $mail->IsHTML(true);
                     $mail->CharSet = "UTF-8";
