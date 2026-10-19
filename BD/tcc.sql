@@ -44,9 +44,9 @@ CREATE TABLE IF NOT EXISTS `aluno` (
 --
 
 INSERT INTO `aluno` (`matricula`, `nome`, `email`, `num_responsavel`, `foto`, `ID_turma`) VALUES
-('2019321631', 'Claudia Kussuma Flores Lesama', '2019321631@aluno.iffar.edu.br', '(55) 9-9844-8100', '2023.12.01-20.15.peg', 11),
-('2021319283', 'Bianca Fernandes Ramos', 'bianca.2021319309@aluno.iffar.edu.br', '(55) 9-9638-3842', '2023.12.01-17.53.jpg', 11),
-('2021319363', 'Emilly Nascimento Dias', 'emilly.2021319363@aluno.iffar.edu.br', '(55) 9-9277-6238', '2023.11.25-01.03.png', 11);
+('2023000001', 'Ana Exemplo Souza', 'ana.exemplo@exemplo.com', '(55) 9-0000-0001', NULL, 11),
+('2023000002', 'Bruno Exemplo Lima', 'bruno.exemplo@exemplo.com', '(55) 9-0000-0002', NULL, 11),
+('2023000003', 'Carla Exemplo Rocha', 'carla.exemplo@exemplo.com', '(55) 9-0000-0003', NULL, 11);
 
 -- --------------------------------------------------------
 
@@ -102,22 +102,22 @@ CREATE TABLE IF NOT EXISTS `historico` (
 --
 
 INSERT INTO `historico` (`ID_historico`, `data_hr`, `matricula`, `motivo`) VALUES
-(42, '2023-10-13 20:44:13', '2021319363', NULL),
-(43, '2023-10-10 20:45:53', '2021319363', NULL),
-(44, '2023-10-13 20:53:04', '2021319363', NULL),
-(45, '2023-10-13 21:52:11', '2021319363', NULL),
-(46, '2023-10-13 21:53:08', '2021319363', NULL),
-(47, '2023-10-13 21:53:42', '2021319363', NULL),
-(48, '2023-10-13 22:37:11', '2021319363', NULL),
-(49, '2023-10-13 22:43:09', '2021319363', NULL),
-(61, '2023-10-28 18:41:32', '2021319363', 'Projeto'),
-(62, '2023-10-28 18:40:35', '2021319363', 'Aula Cancelada'),
-(99, '2023-11-16 21:12:36', '2021319363', NULL),
-(100, '2023-11-24 22:07:02', '2021319363', 'Chovendo'),
-(101, '2023-11-26 04:25:21', '2021319363', NULL),
-(102, '2023-11-29 08:44:58', '2021319363', 'Chovendo'),
-(104, '2023-12-01 17:23:56', '2019321631', NULL),
-(105, '2023-12-01 17:24:45', '2019321631', 'Prof Faltou');
+(42, '2023-10-13 20:44:13', '2023000003', NULL),
+(43, '2023-10-10 20:45:53', '2023000003', NULL),
+(44, '2023-10-13 20:53:04', '2023000003', NULL),
+(45, '2023-10-13 21:52:11', '2023000003', NULL),
+(46, '2023-10-13 21:53:08', '2023000003', NULL),
+(47, '2023-10-13 21:53:42', '2023000003', NULL),
+(48, '2023-10-13 22:37:11', '2023000003', NULL),
+(49, '2023-10-13 22:43:09', '2023000003', NULL),
+(61, '2023-10-28 18:41:32', '2023000003', 'Projeto'),
+(62, '2023-10-28 18:40:35', '2023000003', 'Aula Cancelada'),
+(99, '2023-11-16 21:12:36', '2023000003', NULL),
+(100, '2023-11-24 22:07:02', '2023000003', 'Chovendo'),
+(101, '2023-11-26 04:25:21', '2023000003', NULL),
+(102, '2023-11-29 08:44:58', '2023000003', 'Chovendo'),
+(104, '2023-12-01 17:23:56', '2023000001', NULL),
+(105, '2023-12-01 17:24:45', '2023000001', 'Prof Faltou');
 
 -- --------------------------------------------------------
 
@@ -221,9 +221,8 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 --
 
 INSERT INTO `usuario` (`nivel`, `CPF`, `email`, `senha`) VALUES
-('operador', '03739838086', 'rubianascimento0509@gmail.com', '$2y$10$KuoeNLCUesd8OrwYJlITb.3lImlRxI0WZ/.NoRbybiQKVeNr8IGDy'),
-('operador', '05851967021', 'bianca.2021319309@aluno.iffar.edu.br', '$2y$10$uyk2nNFe0nin6gSeDD0D5epL5QlVUYVzBKnImUmiCO9cTe633ptQO'),
-('admin', '06410040016', 'emilly.2021319363@aluno.iffar.edu.br', '$2y$10$AWu04zUtKgHUdfs3BvrIOe7btNGnk5CFJKH5Z2Qtgq4fR/3zQg1F.');
+('admin', '00000000001', 'admin@exemplo.com', '$2y$10$.Yd7nY73kgAAR9OTITARieXFnowr7XbPOraTr2b.yP2TlqEBCnyie'),
+('operador', '00000000002', 'operador@exemplo.com', '$2y$10$oZYH0lnihyJJAU7IsFnXKOLLmrBG5gprnjyQt7EXKK0P5FdwYWY8a');
 
 --
 -- Restrições para despejos de tabelas
