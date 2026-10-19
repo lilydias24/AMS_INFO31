@@ -3,3 +3,7 @@ config.local.php
 
 # Dependências instaladas pelo Composer
 vendor/
+
+# Fotos enviadas pelo sistema (dados pessoais de alunos)
+Aluno/fotos/*
+!Aluno/fotos/.gitkeep
