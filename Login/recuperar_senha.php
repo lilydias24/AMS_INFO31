@@ -5,9 +5,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require '../PHPMailer-master/src/PHPMailer.php';
-require '../PHPMailer-master/src/SMTP.php';
-require '../PHPMailer-master/src/Exception.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 if (isset($_POST['recuperar'])) {
     $nova_senha = substr(md5(time()), 0, 6);

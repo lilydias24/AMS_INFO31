@@ -1,2 +1,5 @@
 # Credenciais locais (copiar de config.local.example.php)
 config.local.php
+
+# Dependências instaladas pelo Composer
+vendor/

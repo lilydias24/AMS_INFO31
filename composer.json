@@ -1,0 +1,9 @@
+{
+    "name": "lilydias24/ams-info31",
+    "description": "Sistema de Monitoramento de Acesso ao Campus IFFar Uruguaiana (TCC do Técnico em Informática)",
+    "type": "project",
+    "require": {
+        "php": ">=7.4",
+        "phpmailer/phpmailer": "^6.8"
+    }
+}
