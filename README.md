@@ -4,6 +4,12 @@ Sistema web para registrar a entrada e a saída de alunos no campus a partir do 
 
 Foi o meu primeiro sistema completo: Trabalho de Conclusão de Curso do Técnico em Informática Integrado (turma INFO31) no IFFar Campus Uruguaiana, 2023.
 
+| Página inicial | Painel do administrador |
+| --- | --- |
+| ![Página inicial do sistema](docs/img/inicio.png) | ![Painel do administrador com os cadastros e relatórios](docs/img/admin.png) |
+
+![Histórico de acessos com status calculado a partir do cronograma da turma (dados fictícios)](docs/img/historico.png)
+
 ## Funcionalidades
 
 - **Leitura de QR Code** pela câmera do navegador e registro automático no histórico, com status calculado a partir do cronograma da turma.
